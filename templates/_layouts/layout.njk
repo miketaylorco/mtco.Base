@@ -1,0 +1,67 @@
+{% import "_includes/_macro.njk" as macro %}<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% if id != "home" %}{% if browserTitle != "" %}{{ browserTitle }}{% else %}{{ name }}{% endif %}{% if global.titleSuffix != "" %} - {% endif %}{% endif %}{{ global.titleSuffix }}</title>
+  {% if description != "" %}<meta name="description" content="{{ description }}">{% endif %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {# <link rel="apple-touch-icon" href="apple-touch-icon.png"> #}
+  {# place favicon.ico in the root directory #}
+
+  <link rel="stylesheet" href="{{'style.min.css'|style}}">
+  {% block styles %}{% endblock %}
+
+  <script src="{{'head.min.js'|script}}"></script>
+
+</head>
+<body class="{% if showSiteNav == true %}show-nav{% else %}hide-nav{% endif %} {% if global.debug == true %} debug{% endif %}">
+
+  {% include '_includes/browsehappy.njk' %}
+
+  <div id="viewport">
+
+    {% include "_includes/header.njk" %}
+
+    <div id="page-wrap" role="main">
+
+      {% block content %}{% endblock %}
+
+      {# if you're using left nav, you'll need this as the last "row" (or row-bleed)
+      <div class="row">
+        <div class="container-wrap">
+          {% block lastrow %}{% endblock %}
+        </div>
+        <div class="navigation-wrap">
+          {% include "_includes/navigation-site.njk" %}
+        </div>
+      </div>
+      #}
+
+    </div>
+
+    {% include "_includes/footer.njk" %}
+
+  </div>
+
+
+  {# for simple, single-level sites, could move this to below header, if you want it in the flow #}
+  <div id="navigation-mobile" tabindex="-1"></div>
+
+  <div id="overlay"></div>
+  {% include '_includes/media-query-labels.njk' %}
+
+  {% if global.debug == true and global.showStyleGuide == true %}{% include '_includes/navigation-styleguide.njk' %}{% endif %}
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="{{'jquery-1.11.3.min.js'|script}}"><\/script>')</script>
+  <script src="{{'body.min.js'|script}}"></script>
+  <script src="{{'common.min.js'|script}}"></script>
+  
+  {% block scripts %}{% endblock %}
+
+  {% include '_includes/analytics.njk' %}
+
+</body>
+</html>

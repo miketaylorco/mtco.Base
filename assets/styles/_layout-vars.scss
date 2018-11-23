@@ -1,0 +1,394 @@
+// ================================================================================
+// switches
+
+$inset: true;           // <-- disable if you're not using insets
+$offset: true;          // <-- disable if you're not using offsets
+$nav: true;             // <-- disable if you're not using left nav
+$wrapfloat: right;      // <-- if wrapfloat is "right", content is on right, nav on left
+$show-nav-nojs: true;   // <-- disable if you don't want to force nav to show if no JS (shows full width)
+$debug: true;           // <-- enable to see block colours, otherwise disable
+
+
+// ================================================================================
+// global grid dimensions
+
+$row-gutter-xs: 3%;
+$container-outer-gutter-xs: 3%;
+$container-inner-gutter-xs: 3%;
+$nav-width-xs: 0;
+
+$row-gutter-sm: 3.5%;
+$container-outer-gutter-sm: 3.5%;
+$container-inner-gutter-sm: 3.5%;
+$nav-width-sm: 0;
+
+$row-gutter-md: 4%;
+$container-outer-gutter-md: 3.5%;
+$container-inner-gutter-md: 3%;
+$nav-width-md: 21%;
+
+$row-gutter-lg: 5%;
+$container-outer-gutter-lg: 3%;
+$container-inner-gutter-lg: 2.5%;
+$nav-width-lg: 18%;
+
+$row-gutter-xl: 8%;
+$container-outer-gutter-xl: 5%;
+$container-inner-gutter-xl: 2%;
+$nav-width-xl: 15%;
+
+$row-max: $bpx; // max width of row - centred in browser (if < 100% or px value)
+
+
+
+
+// ================================================================================
+// mixin for container contexts
+
+@mixin context ($context) {
+
+  @if $context == rc {
+    @content;
+
+  } @else if $context == rbc {
+    .row-bleed & { @content; }
+
+  } @else if $context == nrc and $nav == true {
+
+    @if $nw > 0 {
+      .show-nav .container-wrap & { @content; }
+    }
+
+  } @else if $context == nrbc and $nav == true {
+
+    @if $nw > 0 {
+      .show-nav .row-bleed .container-wrap & { @content; }
+    }
+
+  } @elseif $context == cb {
+
+    .container-bleed & { @content; }
+
+  }
+
+}
+
+
+// default
+
+$rg: $row-gutter-xs;
+$cog: $container-outer-gutter-xs;
+$cig: $container-inner-gutter-xs;
+$nw: $nav-width-xs;
+
+$cdg: $cog - $cig;
+
+$rcw: (100% - (2 * $rg));
+$nrcw: ($rcw - $nw);
+$nrbcw: (100% - $nw);
+
+$rciw: ($rcw - $cog - $cdg);
+$rbciw: (100% - $cog - $cdg);
+$nrciw: ($nrcw - $cog - $cdg);
+$nrbciw: ($nrbcw - $cog - $cdg);
+
+// blocks
+
+$rc-c1: (($rciw - (12 * $cig)) / 12);
+$rbc-c1: (($rbciw - (12 * $cig)) / 12);
+$nrc-c1: (($nrciw - (12 * $cig)) / 12);
+$nrbc-c1: (($nrbciw - (12 * $cig)) / 12);
+
+$rc-c3: (3 * $rc-c1) + (2 * $cig);
+$rbc-c3: (3 * $rbc-c1) + (2 * $cig);
+$nrc-c3: (3 * $nrc-c1) + (2 * $cig);
+$nrbc-c3: (3 * $nrbc-c1) + (2 * $cig);
+
+$rc-c6: (6 * $rc-c1) + (5 * $cig);
+$rbc-c6: (6 * $rbc-c1) + (5 * $cig);
+$nrc-c6: (6 * $nrc-c1) + (5 * $cig);
+$nrbc-c6: (6 * $nrbc-c1) + (5 * $cig);
+
+
+
+@mixin layout-variables($bp) {
+
+  @if $bp == xs {
+
+    // already defined above
+
+
+  } @else if $bp == sm {
+
+    $rg: $row-gutter-sm !global;
+    $cog: $container-outer-gutter-sm !global;
+    $cig: $container-inner-gutter-sm !global;
+    $nw: $nav-width-sm !global;
+
+    $cdg: $cog - $cig !global;
+
+    $rcw: (100% - (2 * $rg)) !global;
+    $nrcw: ($rcw - $nw) !global;
+    $nrbcw: (100% - $nw) !global;
+
+    $rciw: ($rcw - $cog - $cdg) !global;
+    $rbciw: (100% - $cog - $cdg) !global;
+    $nrciw: ($nrcw - $cog - $cdg) !global;
+    $nrbciw: ($nrbcw - $cog - $cdg) !global;
+
+    // blocks
+
+    $rc-c1: (($rciw - (12 * $cig)) / 12) !global;
+    $rbc-c1: (($rbciw - (12 * $cig)) / 12) !global;
+    $nrc-c1: (($nrciw - (12 * $cig)) / 12) !global;
+    $nrbc-c1: (($nrbciw - (12 * $cig)) / 12) !global;
+
+    $rc-c2: (2 * $rc-c1) + $cig !global;
+    $rbc-c2: (2 * $rbc-c1) + $cig !global;
+    $nrc-c2: (2 * $nrc-c1) + $cig !global;
+    $nrbc-c2: (2 * $nrbc-c1) + $cig !global;
+
+    $rc-c3: (3 * $rc-c1) + (2 * $cig) !global;
+    $rbc-c3: (3 * $rbc-c1) + (2 * $cig) !global;
+    $nrc-c3: (3 * $nrc-c1) + (2 * $cig) !global;
+    $nrbc-c3: (3 * $nrbc-c1) + (2 * $cig) !global;
+
+    $rc-c4: (4 * $rc-c1) + (3 * $cig) !global;
+    $rbc-c4: (4 * $rbc-c1) + (3 * $cig) !global;
+    $nrc-c4: (4 * $nrc-c1) + (3 * $cig) !global;
+    $nrbc-c4: (4 * $nrbc-c1) + (3 * $cig) !global;
+
+    $rc-c6: (6 * $rc-c1) + (5 * $cig) !global;
+    $rbc-c6: (6 * $rbc-c1) + (5 * $cig) !global;
+    $nrc-c6: (6 * $nrc-c1) + (5 * $cig) !global;
+    $nrbc-c6: (6 * $nrbc-c1) + (5 * $cig) !global;
+
+    $rc-c8: (8 * $rc-c1) + (7 * $cig) !global;
+    $rbc-c8: (8 * $rbc-c1) + (7 * $cig) !global;
+    $nrc-c8: (8 * $nrc-c1) + (7 * $cig) !global;
+    $nrbc-c8: (8 * $nrbc-c1) + (7 * $cig) !global;
+
+
+
+  } @else if $bp == md {
+
+    $rg: $row-gutter-md !global;
+    $cog: $container-outer-gutter-md !global;
+    $cig: $container-inner-gutter-md !global;
+    $nw: $nav-width-md !global;
+
+    $cdg: $cog - $cig !global;
+
+    $rcw: (100% - (2 * $rg)) !global;
+    $nrcw: ($rcw - $nw) !global;
+    $nrbcw: (100% - $nw) !global;
+
+    $rciw: ($rcw - $cog - $cdg) !global;
+    $rbciw: (100% - $cog - $cdg) !global;
+    $nrciw: ($nrcw - $cog - $cdg) !global;
+    $nrbciw: ($nrbcw - $cog - $cdg) !global;
+
+    // blocks
+
+    $rc-c1: (($rciw - (12 * $cig)) / 12) !global;
+    $rbc-c1: (($rbciw - (12 * $cig)) / 12) !global;
+    $nrc-c1: (($nrciw - (12 * $cig)) / 12) !global;
+    $nrbc-c1: (($nrbciw - (12 * $cig)) / 12) !global;
+
+    $rc-c2: (2 * $rc-c1) + $cig !global;
+    $rbc-c2: (2 * $rbc-c1) + $cig !global;
+    $nrc-c2: (2 * $nrc-c1) + $cig !global;
+    $nrbc-c2: (2 * $nrbc-c1) + $cig !global;
+
+    $rc-c3: (3 * $rc-c1) + (2 * $cig) !global;
+    $rbc-c3: (3 * $rbc-c1) + (2 * $cig) !global;
+    $nrc-c3: (3 * $nrc-c1) + (2 * $cig) !global;
+    $nrbc-c3: (3 * $nrbc-c1) + (2 * $cig) !global;
+
+    $rc-c4: (4 * $rc-c1) + (3 * $cig) !global;
+    $rbc-c4: (4 * $rbc-c1) + (3 * $cig) !global;
+    $nrc-c4: (4 * $nrc-c1) + (3 * $cig) !global;
+    $nrbc-c4: (4 * $nrbc-c1) + (3 * $cig) !global;
+
+    $rc-c5: (5 * $rc-c1) + (4 * $cig) !global;
+    $rbc-c5: (5 * $rbc-c1) + (4 * $cig) !global;
+    $nrc-c5: (5 * $nrc-c1) + (4 * $cig) !global;
+    $nrbc-c5: (5 * $nrbc-c1) + (4 * $cig) !global;
+
+    $rc-c6: (6 * $rc-c1) + (5 * $cig) !global;
+    $rbc-c6: (6 * $rbc-c1) + (5 * $cig) !global;
+    $nrc-c6: (6 * $nrc-c1) + (5 * $cig) !global;
+    $nrbc-c6: (6 * $nrbc-c1) + (5 * $cig) !global;
+
+    $rc-c7: (7 * $rc-c1) + (6 * $cig) !global;
+    $rbc-c7: (7 * $rbc-c1) + (6 * $cig) !global;
+    $nrc-c7: (7 * $nrc-c1) + (6 * $cig) !global;
+    $nrbc-c7: (7 * $nrbc-c1) + (6 * $cig) !global;
+
+    $rc-c8: (8 * $rc-c1) + (7 * $cig) !global;
+    $rbc-c8: (8 * $rbc-c1) + (7 * $cig) !global;
+    $nrc-c8: (8 * $nrc-c1) + (7 * $cig) !global;
+    $nrbc-c8: (8 * $nrbc-c1) + (7 * $cig) !global;
+
+    $rc-c9: (9 * $rc-c1) + (8 * $cig) !global;
+    $rbc-c9: (9 * $rbc-c1) + (8 * $cig) !global;
+    $nrc-c9: (9 * $nrc-c1) + (8 * $cig) !global;
+    $nrbc-c9: (9 * $nrbc-c1) + (8 * $cig) !global;
+
+    $rc-c10: (10 * $rc-c1) + (9 * $cig) !global;
+    $rbc-c10: (10 * $rbc-c1) + (9 * $cig) !global;
+    $nrc-c10: (10 * $nrc-c1) + (9 * $cig) !global;
+    $nrbc-c10: (10 * $nrbc-c1) + (9 * $cig) !global;
+
+
+
+  } @else if $bp == lg {
+
+    $rg: $row-gutter-lg !global;
+    $cog: $container-outer-gutter-lg !global;
+    $cig: $container-inner-gutter-lg !global;
+    $nw: $nav-width-lg !global;
+
+    $cdg: $cog - $cig !global;
+
+    $rcw: (100% - (2 * $rg)) !global;
+    $nrcw: ($rcw - $nw) !global;
+    $nrbcw: (100% - $nw) !global;
+
+    $rciw: ($rcw - $cog - $cdg) !global;
+    $rbciw: (100% - $cog - $cdg) !global;
+    $nrciw: ($nrcw - $cog - $cdg) !global;
+    $nrbciw: ($nrbcw - $cog - $cdg) !global;
+
+    // blocks
+
+    $rc-c1: (($rciw - (12 * $cig)) / 12) !global;
+    $rbc-c1: (($rbciw - (12 * $cig)) / 12) !global;
+    $nrc-c1: (($nrciw - (12 * $cig)) / 12) !global;
+    $nrbc-c1: (($nrbciw - (12 * $cig)) / 12) !global;
+
+    $rc-c2: (2 * $rc-c1) + $cig !global;
+    $rbc-c2: (2 * $rbc-c1) + $cig !global;
+    $nrc-c2: (2 * $nrc-c1) + $cig !global;
+    $nrbc-c2: (2 * $nrbc-c1) + $cig !global;
+
+    $rc-c3: (3 * $rc-c1) + (2 * $cig) !global;
+    $rbc-c3: (3 * $rbc-c1) + (2 * $cig) !global;
+    $nrc-c3: (3 * $nrc-c1) + (2 * $cig) !global;
+    $nrbc-c3: (3 * $nrbc-c1) + (2 * $cig) !global;
+
+    $rc-c4: (4 * $rc-c1) + (3 * $cig) !global;
+    $rbc-c4: (4 * $rbc-c1) + (3 * $cig) !global;
+    $nrc-c4: (4 * $nrc-c1) + (3 * $cig) !global;
+    $nrbc-c4: (4 * $nrbc-c1) + (3 * $cig) !global;
+
+    $rc-c5: (5 * $rc-c1) + (4 * $cig) !global;
+    $rbc-c5: (5 * $rbc-c1) + (4 * $cig) !global;
+    $nrc-c5: (5 * $nrc-c1) + (4 * $cig) !global;
+    $nrbc-c5: (5 * $nrbc-c1) + (4 * $cig) !global;
+
+    $rc-c6: (6 * $rc-c1) + (5 * $cig) !global;
+    $rbc-c6: (6 * $rbc-c1) + (5 * $cig) !global;
+    $nrc-c6: (6 * $nrc-c1) + (5 * $cig) !global;
+    $nrbc-c6: (6 * $nrbc-c1) + (5 * $cig) !global;
+
+    $rc-c7: (7 * $rc-c1) + (6 * $cig) !global;
+    $rbc-c7: (7 * $rbc-c1) + (6 * $cig) !global;
+    $nrc-c7: (7 * $nrc-c1) + (6 * $cig) !global;
+    $nrbc-c7: (7 * $nrbc-c1) + (6 * $cig) !global;
+
+    $rc-c8: (8 * $rc-c1) + (7 * $cig) !global;
+    $rbc-c8: (8 * $rbc-c1) + (7 * $cig) !global;
+    $nrc-c8: (8 * $nrc-c1) + (7 * $cig) !global;
+    $nrbc-c8: (8 * $nrbc-c1) + (7 * $cig) !global;
+
+    $rc-c9: (9 * $rc-c1) + (8 * $cig) !global;
+    $rbc-c9: (9 * $rbc-c1) + (8 * $cig) !global;
+    $nrc-c9: (9 * $nrc-c1) + (8 * $cig) !global;
+    $nrbc-c9: (9 * $nrbc-c1) + (8 * $cig) !global;
+
+    $rc-c10: (10 * $rc-c1) + (9 * $cig) !global;
+    $rbc-c10: (10 * $rbc-c1) + (9 * $cig) !global;
+    $nrc-c10: (10 * $nrc-c1) + (9 * $cig) !global;
+    $nrbc-c10: (10 * $nrbc-c1) + (9 * $cig) !global;
+
+
+  } @else if $bp == xl {
+
+    $rg: $row-gutter-xl !global;
+    $cog: $container-outer-gutter-xl !global;
+    $cig: $container-inner-gutter-xl !global;
+    $nw: $nav-width-xl !global;
+
+    $cdg: $cog - $cig !global;
+
+    $rcw: (100% - (2 * $rg)) !global;
+    $nrcw: ($rcw - $nw) !global;
+    $nrbcw: (100% - $nw) !global;
+
+    $rciw: ($rcw - $cog - $cdg) !global;
+    $rbciw: (100% - $cog - $cdg) !global;
+    $nrciw: ($nrcw - $cog - $cdg) !global;
+    $nrbciw: ($nrbcw - $cog - $cdg) !global;
+
+    // blocks
+
+    $rc-c1: (($rciw - (12 * $cig)) / 12) !global;
+    $rbc-c1: (($rbciw - (12 * $cig)) / 12) !global;
+    $nrc-c1: (($nrciw - (12 * $cig)) / 12) !global;
+    $nrbc-c1: (($nrbciw - (12 * $cig)) / 12) !global;
+
+    $rc-c2: (2 * $rc-c1) + $cig !global;
+    $rbc-c2: (2 * $rbc-c1) + $cig !global;
+    $nrc-c2: (2 * $nrc-c1) + $cig !global;
+    $nrbc-c2: (2 * $nrbc-c1) + $cig !global;
+
+    $rc-c3: (3 * $rc-c1) + (2 * $cig) !global;
+    $rbc-c3: (3 * $rbc-c1) + (2 * $cig) !global;
+    $nrc-c3: (3 * $nrc-c1) + (2 * $cig) !global;
+    $nrbc-c3: (3 * $nrbc-c1) + (2 * $cig) !global;
+
+    $rc-c4: (4 * $rc-c1) + (3 * $cig) !global;
+    $rbc-c4: (4 * $rbc-c1) + (3 * $cig) !global;
+    $nrc-c4: (4 * $nrc-c1) + (3 * $cig) !global;
+    $nrbc-c4: (4 * $nrbc-c1) + (3 * $cig) !global;
+
+    $rc-c5: (5 * $rc-c1) + (4 * $cig) !global;
+    $rbc-c5: (5 * $rbc-c1) + (4 * $cig) !global;
+    $nrc-c5: (5 * $nrc-c1) + (4 * $cig) !global;
+    $nrbc-c5: (5 * $nrbc-c1) + (4 * $cig) !global;
+
+    $rc-c6: (6 * $rc-c1) + (5 * $cig) !global;
+    $rbc-c6: (6 * $rbc-c1) + (5 * $cig) !global;
+    $nrc-c6: (6 * $nrc-c1) + (5 * $cig) !global;
+    $nrbc-c6: (6 * $nrbc-c1) + (5 * $cig) !global;
+
+    $rc-c7: (7 * $rc-c1) + (6 * $cig) !global;
+    $rbc-c7: (7 * $rbc-c1) + (6 * $cig) !global;
+    $nrc-c7: (7 * $nrc-c1) + (6 * $cig) !global;
+    $nrbc-c7: (7 * $nrbc-c1) + (6 * $cig) !global;
+
+    $rc-c8: (8 * $rc-c1) + (7 * $cig) !global;
+    $rbc-c8: (8 * $rbc-c1) + (7 * $cig) !global;
+    $nrc-c8: (8 * $nrc-c1) + (7 * $cig) !global;
+    $nrbc-c8: (8 * $nrbc-c1) + (7 * $cig) !global;
+
+    $rc-c9: (9 * $rc-c1) + (8 * $cig) !global;
+    $rbc-c9: (9 * $rbc-c1) + (8 * $cig) !global;
+    $nrc-c9: (9 * $nrc-c1) + (8 * $cig) !global;
+    $nrbc-c9: (9 * $nrbc-c1) + (8 * $cig) !global;
+
+    $rc-c10: (10 * $rc-c1) + (9 * $cig) !global;
+    $rbc-c10: (10 * $rbc-c1) + (9 * $cig) !global;
+    $nrc-c10: (10 * $nrc-c1) + (9 * $cig) !global;
+    $nrbc-c10: (10 * $nrbc-c1) + (9 * $cig) !global;
+
+
+  }
+
+
+
+}
+
+
+

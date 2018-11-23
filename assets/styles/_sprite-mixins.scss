@@ -1,0 +1,139 @@
+@mixin sprite-width($sprite) {
+	width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+	height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+	$sprite-offset-x: nth($sprite, 3);
+	$sprite-offset-y: nth($sprite, 4);
+	background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+	$sprite-image: nth($sprite, 9);
+	background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+	@include sprite-image($sprite);
+	@include sprite-position($sprite);
+	@include sprite-width($sprite);
+	@include sprite-height($sprite);
+}
+
+/* PNG Sprite */
+@mixin sprites($sprites) {
+	@each $sprite in $sprites {
+		$sprite-name: nth($sprite, 10);
+		.#{$sprite-name} {
+			@include sprite($sprite);
+		}
+	}
+}
+
+/* SVG Sprite with PNG Fallback */
+@mixin sprites-svg($sprites) {
+	@each $sprite in $sprites {
+		$sprite-name: nth($sprite, 10);
+		.#{$sprite-name} {
+			.no-js &, .no-svg & {
+				@include sprite($sprite);
+			}
+			.svg & {display: none;}
+		}
+
+		.#{$sprite-name}-dims {
+			@include sprite-width($sprite); 
+			@include sprite-height($sprite); 
+		}
+}
+}
+
+
+
+/* Size x2 */
+@mixin sprite-width-x2($sprite) {
+	width: nth($sprite, 5)/2;
+}
+
+@mixin sprite-height-x2($sprite) {
+	height: nth($sprite, 6)/2;
+}
+
+@mixin sprite-position-x2($sprite) {
+	$sprite-offset-x: nth($sprite, 3)/2;
+	$sprite-offset-y: nth($sprite, 4)/2;
+	background-position: $sprite-offset-x  $sprite-offset-y;
+	background-size: nth($sprite, 7)/2 nth($sprite, 8)/2;
+}
+
+@mixin sprite-image-fallback($sprite) {
+	$sprite-image: nth($sprite, 9);
+	background-image: url(#{$fallback});
+}
+
+@mixin sprite-x2($sprite) {
+	@include sprite-image-fallback($sprite);
+	@include sprite-position-x2($sprite);
+	@include sprite-width-x2($sprite);
+	@include sprite-height-x2($sprite);
+}
+
+/* PNG Sprite */
+@mixin sprites-x2($sprites) {
+	@each $sprite in $sprites {
+		$sprite-name: nth($sprite, 10);
+
+		.#{$sprite-name} {
+			@include sprite-x2($sprite);
+		}
+	}
+	@include respond-to(hd) {
+		@each $sprite in $sprites {
+			$sprite-name: nth($sprite, 10);
+
+			.#{$sprite-name} {
+				@include sprite-image($sprite);
+			}
+		}
+	}
+}
+
+/* SVG Sprite with PNG Fallback */
+@mixin sprites-svg-x2($sprites) {
+	@each $sprite in $sprites {
+		$sprite-name: nth($sprite, 10);
+
+		.#{$sprite-name} {
+			.no-js &, .no-svg & {
+				@include sprite-x2($sprite);
+			}
+			.svg & {display: none;}
+		}
+
+		.#{$sprite-name}-dims {
+			@include sprite-width-x2($sprite); 
+			@include sprite-height-x2($sprite); 
+		}
+}
+
+@include respond-to(hd) {
+	@each $sprite in $sprites {
+		$sprite-name: nth($sprite, 10);
+
+		.#{$sprite-name} {
+			.no-js &, .no-svg & {
+				@include sprite-image($sprite);
+			}
+		}
+	}
+}
+}
+
+/* Default: Display PNG fallback first, hide svg, enhance with modernizr if svg supported */
+.no-js svg{
+	display: none;
+}

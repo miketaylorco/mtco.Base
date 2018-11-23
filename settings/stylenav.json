@@ -1,0 +1,55 @@
+{
+  "stylenav": [
+    {
+      "id": "style",
+      "children": [
+
+        { "id": "style_layout", "name": "Core framework", "children": [
+
+          { "id": "style_layout_structure" },
+          { "id": "style_layout_structure_nav" },
+          { "id": "style_layout_xs" },
+          { "id": "style_layout_sm" },
+          { "id": "style_layout_md" },
+          { "id": "style_layout_chain" }
+
+        ]},
+        { "id": "style_typography", "name": "Typography", "children": [
+
+          { "id": "style_typography_1", "name": "First typography item", "url": "xxx" },
+          { "id": "style_typography_2", "name": "Second typography item", "url": "xxx" },
+          { "id": "style_typography_3", "name": "Third typography item", "url": "xxx" }
+
+        ]},
+        { "id": "style_layout", "name": "Layout and flow", "children": [
+
+          { "id": "style_layout_1", "name": "First layout item", "url": "xxx" },
+          { "id": "style_layout_2", "name": "Second layout item", "url": "xxx" },
+          { "id": "style_layout_3", "name": "Third layout item", "url": "xxx" }
+
+        ]},
+        { "id": "style_nav", "name": "Navigation devices", "children": [
+
+          { "id": "style_navigation_1", "name": "First navigation item", "url": "xxx" },
+          { "id": "style_navigation_2", "name": "Second navigation item", "url": "xxx" },
+          { "id": "style_navigation_3", "name": "Third navigation item", "url": "xxx" }
+
+        ]},
+        { "id": "style_content", "name": "Content devices", "children": [
+
+          { "id": "style_content_1", "name": "First content item", "url": "xxx" },
+          { "id": "style_content_2", "name": "Second content item", "url": "xxx" },
+          { "id": "style_content_3", "name": "Third content item", "url": "xxx" }
+
+        ]},
+        { "id": "style_interactive", "name": "Interactive devices", "children": [
+
+          { "id": "style_interactive_1", "name": "First interactive item", "url": "xxx" },
+          { "id": "style_interactive_2", "name": "Second interactive item", "url": "xxx" },
+          { "id": "style_interactive_3", "name": "Third interactive item", "url": "xxx" }
+
+        ]}
+      ]
+    }
+  ]
+}

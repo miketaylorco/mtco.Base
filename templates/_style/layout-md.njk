@@ -1,0 +1,194 @@
+---
+id: "style_layout_md"
+name: "MD+ layout options"
+---
+
+{% extends "_layouts/framework.njk" %}
+
+
+{% block content %}
+
+<h1>{{ name }}</h1>
+
+<p><strong>Note:</strong> All <code><b>md-</b></code> prefixes shown can also be <code><b>lg-</b></code> or <code><b>xl-</b></code> as required.</p>
+
+<div class="row">
+
+  <h2>Blocks</h2>
+
+  <div class="container">
+    <h3>Blocks available</h3>
+    <div class="block md-c3 clear-all"><code>block <b>md-c3</b></code></div>
+    <div class="block md-c4 clear-all"><code>block <b>md-c4</b></code></div>
+    <div class="block md-c5 clear-all"><code>block <b>md-c5</b></code></div>
+    <div class="block md-c6 clear-all"><code>block <b>md-c6</b></code></div>
+    <div class="block md-c7 clear-all"><code>block <b>md-c7</b></code></div>
+    <div class="block md-c8 clear-all"><code>block <b>md-c8</b></code></div>
+    <div class="block md-c9 clear-all"><code>block <b>md-c9</b></code></div>
+    <div class="block md-c10 clear-all"><code>block <b>md-c10</b></code></div>
+    <div class="block clear-all"><code>block</code></div>
+  </div>
+
+
+  <div class="container">
+    <h3>Combinations (2-col)</h3>
+
+    <div class="block md-c3 clear-all">[1] <code>block md-c3</code></div>
+    <div class="block md-c9">[2] <code>block md-c9</code></div>
+
+    <div class="block md-c4 clear-all">[1] <code>block md-c4</code></div>
+    <div class="block md-c8">[2] <code>block md-c8</code></div>
+
+    <div class="block md-c5 clear-all">[1] <code>block md-c5</code></div>
+    <div class="block md-c7">[2] <code>block md-c7</code></div>
+
+    <div class="block md-c6 clear-all">[1] <code>block md-c6</code></div>
+    <div class="block md-c6">[2] <code>block md-c6</code></div>
+
+    <div class="block md-c7 clear-all">[1] <code>block md-c7</code></div>
+    <div class="block md-c5">[2] <code>block md-c5</code></div>
+
+    <div class="block md-c8 clear-all">[1] <code>block md-c8</code></div>
+    <div class="block md-c4">[2] <code>block md-c4</code></div>
+
+    <div class="block md-c9 clear-all">[1] <code>block md-c9</code></div>
+    <div class="block md-c3">[2] <code>block md-c3</code></div>
+
+
+    <h3>Combinations (3-col)</h3>
+
+    <div class="block md-c3 clear-all">[1] <code>block md-c3</code></div>
+    <div class="block md-c3">[2] <code>block md-c3</code></div>
+    <div class="block md-c6">[3] <code>block md-c6</code></div>
+
+    <div class="block md-c3 clear-all">[1] <code>block md-c3</code></div>
+    <div class="block md-c4">[2] <code>block md-c4</code></div>
+    <div class="block md-c5">[3] <code>block md-c5</code></div>
+
+    <div class="block md-c3 clear-all">[1] <code>block md-c3</code></div>
+    <div class="block md-c5">[2] <code>block md-c5</code></div>
+    <div class="block md-c4">[3] <code>block md-c4</code></div>
+
+    <div class="block md-c3 clear-all">[1] <code>block md-c3</code></div>
+    <div class="block md-c6">[2] <code>block md-c6</code></div>
+    <div class="block md-c3">[3] <code>block md-c3</code></div>
+
+    <div class="block md-c4 clear-all">[1] <code>block md-c4</code></div>
+    <div class="block md-c3">[2] <code>block md-c3</code></div>
+    <div class="block md-c5">[3] <code>block md-c5</code></div>
+
+    <div class="block md-c4 clear-all">[1] <code>block md-c4</code></div>
+    <div class="block md-c4">[2] <code>block md-c4</code></div>
+    <div class="block md-c4">[3] <code>block md-c4</code></div>
+
+    <div class="block md-c4 clear-all">[1] <code>block md-c4</code></div>
+    <div class="block md-c5">[2] <code>block md-c5</code></div>
+    <div class="block md-c3">[3] <code>block md-c3</code></div>
+
+    <div class="block md-c5 clear-all">[1] <code>block md-c5</code></div>
+    <div class="block md-c3">[2] <code>block md-c3</code></div>
+    <div class="block md-c4">[3] <code>block md-c4</code></div>
+
+    <div class="block md-c5 clear-all">[1] <code>block md-c5</code></div>
+    <div class="block md-c4">[2] <code>block md-c4</code></div>
+    <div class="block md-c3">[3] <code>block md-c3</code></div>
+
+    <div class="block md-c6 clear-all">[1] <code>block md-c6</code></div>
+    <div class="block md-c3">[2] <code>block md-c3</code></div>
+    <div class="block md-c3">[3] <code>block md-c3</code></div>
+
+
+    <h3>Combinations (4-col)</h3>
+
+    <div class="block md-c3 clear-all">[1] <code>block md-c3</code></div>
+    <div class="block md-c3">[2] <code>block md-c3</code></div>
+    <div class="block md-c3">[3] <code>block md-c3</code></div>
+    <div class="block md-c3">[4] <code>block md-c3</code></div>
+
+
+    <h3>Switching order</h3>
+    <div class="block md-c4 md-switch">[1] <code>block md-c4 <b>md-switch</b></code></div>
+    <div class="block md-c8 md-switch">[2] <code>block md-c8 <b>md-switch</b></code></div>
+
+  </div>
+
+
+
+  <h2>Inset</h2>
+
+  <div class="container">
+    <div class="block">
+      <div class="inset md-c6">[1] <code><b>inset</b> <b>md-c6</b></code></div>
+      <p>[2] <code>block</code> Morbi accumsan pharetra neque a molestie. Mauris nulla arcu, euismod vel faucibus nec, tristique nec eros. Nulla vulputate, nisl blandit varius auctor, ante diam fermentum ipsum, sit amet tincidunt sem libero et velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lectus lorem, consectetur eget dignissim a, condimentum euismod lectus. Morbi eu erat dapibus eros fringilla elementum ut in nunc. Maecenas facilisis sapien ac sem ornare interdum. In a lectus sem. Quisque consectetur ipsum et libero eleifend consectetur.</p>
+    </div>
+
+    <div class="block clear-all">
+      <div class="inset md-c4">[1] <code><b>inset</b> <b>md-c4</b></code></div>
+      <p>[2] <code>block</code> Morbi accumsan pharetra neque a molestie. Mauris nulla arcu, euismod vel faucibus nec, tristique nec eros. Nulla vulputate, nisl blandit varius auctor, ante diam fermentum ipsum, sit amet tincidunt sem libero et velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lectus lorem, consectetur eget dignissim a, condimentum euismod lectus. Morbi eu erat dapibus eros fringilla elementum ut in nunc. Maecenas facilisis sapien ac sem ornare interdum. In a lectus sem. Quisque consectetur ipsum et libero eleifend consectetur.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <h3>Inset breaks out of c10</h3>
+    <div class="block md-c10">
+      <div class="inset md-c6">[1] <code><b>inset</b> <b>md-c6</b></code></div>
+      <p>[2] <code>block <b>md-c10</b></code> Morbi accumsan pharetra neque a molestie. Mauris nulla arcu, euismod vel faucibus nec, tristique nec eros. Nulla vulputate, nisl blandit varius auctor, ante diam fermentum ipsum, sit amet tincidunt sem libero et velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lectus lorem, consectetur eget dignissim a, condimentum euismod lectus. Morbi eu erat dapibus eros fringilla elementum ut in nunc. Maecenas facilisis sapien ac sem ornare interdum. In a lectus sem. Quisque consectetur ipsum et libero eleifend consectetur.</p>
+    </div>
+
+    <div class="block md-c10 clear-all">
+      <div class="inset md-c4">[1] <code><b>inset</b> <b>md-c4</b></code></div>
+      <p>[2] <code>block <b>md-c10</b></code> Morbi accumsan pharetra neque a molestie. Mauris nulla arcu, euismod vel faucibus nec, tristique nec eros. Nulla vulputate, nisl blandit varius auctor, ante diam fermentum ipsum, sit amet tincidunt sem libero et velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lectus lorem, consectetur eget dignissim a, condimentum euismod lectus. Morbi eu erat dapibus eros fringilla elementum ut in nunc. Maecenas facilisis sapien ac sem ornare interdum. In a lectus sem. Quisque consectetur ipsum et libero eleifend consectetur.</p>
+    </div>
+  </div>
+
+  <h2>Offset</h2>
+
+  <div class="container">
+    <p>Offsets can be c1, c2, c3 or c4</p>
+    <div class="block md-c4 md-offset-c4 clear-all"><code>block md-c4 <b>md-offset-c4</b></code></div>
+
+    <div class="block md-c6 md-offset-c3 clear-all"><code>block md-c6 <b>md-offset-c3</b></code></div>
+
+    <div class="block md-c3 md-offset-c3 clear-all"><code>block md-c3 <b>md-offset-c3</b></code></div>
+    <div class="block md-c3"><code>block md-c3</code></div>
+
+    <div class="block md-c8 md-offset-c2 clear-all"><code>block md-c8 <b>md-offset-c2</b></code></div>
+
+    <div class="block md-c4 md-offset-c2 clear-all"><code>block md-c4 <b>md-offset-c2</b></code></div>
+    <div class="block md-c4"><code>block md-c4</code></div>
+
+    <div class="block md-c3 md-offset-c2 clear-all"><code>block md-c3 <b>md-offset-c2</b></code></div>
+    <div class="block md-c3 md-offset-c2"><code>block md-c3 <b>md-offset-c2</b></code></div>
+
+    <div class="block md-c10 md-offset-c1 clear-all"><code>block md-c10 <b>md-offset-c1</b></code></div>
+
+    <div class="block md-c5 md-offset-c1 clear-all"><code>block md-c5 <b>md-offset-c1</b></code></div>
+    <div class="block md-c5"><code>block md-c5</code></div>
+
+    <div class="block md-c3 md-offset-c1 clear-all"><code>block md-c3 <b>md-offset-c1</b></code></div>
+    <div class="block md-c4"><code>block md-c4</code></div>
+    <div class="block md-c3"><code>block md-c3</code></div>
+
+    <div class="block md-c4 md-offset-c1 clear-all"><code>block md-c4 <b>md-offset-c1</b></code></div>
+    <div class="block md-c4 md-offset-c2"><code>block md-c4 <b>md-offset-c2</b></code></div>
+
+
+
+  </div>
+
+  <div class="container">
+    <h3>Inset breaks out of offset c10</h3>
+    <div class="block md-c10 md-offset-c1">
+      <div class="inset md-c6">[1] <code><b>inset</b> <b>md-c6</b></code></div>
+      <p>[2] <code>block <b>md-c10</b> <b>md-offset-c1</b></code> Morbi accumsan pharetra neque a molestie. Mauris nulla arcu, euismod vel faucibus nec, tristique nec eros. Nulla vulputate, nisl blandit varius auctor, ante diam fermentum ipsum, sit amet tincidunt sem libero et velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lectus lorem, consectetur eget dignissim a, condimentum euismod lectus. Morbi eu erat dapibus eros fringilla elementum ut in nunc. Maecenas facilisis sapien ac sem ornare interdum. In a lectus sem. Quisque consectetur ipsum et libero eleifend consectetur.</p>
+    </div>
+
+    <div class="block md-c10 md-offset-c1 clear-all">
+      <div class="inset md-c4">[1] <code><b>inset</b> <b>md-c4</b></code></div>
+      <p>[2] <code>block <b>md-c10</b> <b>md-offset-c1</b></code> Morbi accumsan pharetra neque a molestie. Mauris nulla arcu, euismod vel faucibus nec, tristique nec eros. Nulla vulputate, nisl blandit varius auctor, ante diam fermentum ipsum, sit amet tincidunt sem libero et velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lectus lorem, consectetur eget dignissim a, condimentum euismod lectus. Morbi eu erat dapibus eros fringilla elementum ut in nunc. Maecenas facilisis sapien ac sem ornare interdum. In a lectus sem. Quisque consectetur ipsum et libero eleifend consectetur.</p>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

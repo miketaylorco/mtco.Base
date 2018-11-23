@@ -1,0 +1,21 @@
+{{#shapes}}
+${{#selector.shape}}{{expression}}{{^last}}, {{/last}}{{/selector.shape}}-name: '{{#selector.shape}}{{expression}}{{^last}}, {{/last}}{{/selector.shape}}';
+${{#selector.shape}}{{expression}}{{^last}}, {{/last}}{{/selector.shape}}-offset-x: {{position.absolute.x}}px;
+${{#selector.shape}}{{expression}}{{^last}}, {{/last}}{{/selector.shape}}-offset-y: {{position.absolute.y}}px;
+${{#selector.shape}}{{expression}}{{^last}}, {{/last}}{{/selector.shape}}-width: {{width.inner}}px;
+${{#selector.shape}}{{expression}}{{^last}}, {{/last}}{{/selector.shape}}-height: {{height.inner}}px;
+${{#selector.shape}}{{expression}}{{^last}}, {{/last}}{{/selector.shape}}-image: '{{{bgImage}}}?v=1';
+${{#selector.shape}}{{expression}}{{^last}}, {{/last}}{{/selector.shape}}: {{position.absolute.x}}px {{position.absolute.y}}px {{width.inner}}px {{height.inner}}px {{spriteWidth}}px {{spriteHeight}}px {{padding.top}}px '{{#selector.shape}}{{expression}}{{^last}}, {{/last}}{{/selector.shape}}' '{{{bgImage}}}?v=1' '{{{fallback}}}?v=1' '{{{fallbackx2}}}?v=1' true;
+{{/shapes}}
+
+${{name}}-width: {{spriteWidth}}px;
+${{name}}-height: {{spriteHeight}}px;
+${{name}}-image: '{{{bgImage}}}?v=1';
+${{name}}-image-fb: '{{{fallback}}}?v=1';
+${{name}}-image-fb-x2: '{{{fallbackx2}}}?v=1';
+${{name}}-sprites:{{#shapes}} ${{#selector.shape}}{{expression}}{{^last}}, {{/last}}{{/selector.shape}}{{/shapes}};
+${{name}}: {{spriteWidth}}px {{spriteHeight}}px '{{{bgImage}}}?v=1' ${{name}}-sprites;
+${{name}}-padding: {{padding.top}}px;
+${{name}}-svg-bg: true;
+
+@include sprites-bg-svg-x2(${{name}}-sprites);

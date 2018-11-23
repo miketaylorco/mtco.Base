@@ -1,0 +1,109 @@
+// ================================================================================
+// responsive layout breakpoints
+
+$bp1: 520px;
+$bp2: 760px;
+$bp3: 984px;
+$bp4: 1200px;
+$bpx: 1620px; 
+
+$hd-dpr: 1.3;
+$hd-mr: 192dpi;
+
+
+
+
+
+
+@mixin respond-to($media) {
+
+  // based on default styles targeting "extra-small" xs
+
+  @if $media == hd {
+    @media only screen and (-webkit-min-device-pixel-ratio: $hd-dpr), only screen and (min-resolution: $hd-mr) { @content; }
+  
+  /*
+  } @else if $media == xs {
+    // no need - these are default styles
+  }
+  */
+
+  } @else if $media == xs-only {
+    @media only screen and (max-width: $bp1 - 1) { @content; }
+
+  } @else if $media == xs-only-hd {
+    @media only screen and (max-width: $bp1 - 1) and (-webkit-min-device-pixel-ratio: $hd-dpr), only screen and (max-width: $bp1 - 1) and (min-resolution: $hd-mr) { @content; }
+
+
+  // assume "and wider" is default, specify "-only" manually
+  // don't bother with "and smaller" MQs
+
+  } @else if $media == sm {
+    @media only screen and (min-width: $bp1) { @content; }
+
+  } @else if $media == sm-hd {
+    @media only screen and (min-width: $bp1) and (-webkit-min-device-pixel-ratio: $hd-dpr), only screen and (min-width: $bp1) and (min-resolution: $hd-mr) { @content; }
+
+  } @else if $media == sm-only {
+    @media only screen and (min-width: $bp1) and (max-width: $bp2 - 1) { @content; }
+
+  } @elseif $media == sm-only-hd {
+    @media only screen and (min-width: $bp1) and (max-width: $bp2 - 1) and (-webkit-min-device-pixel-ratio: $hd-dpr), only screen and (min-width: $bp1) and (max-width: $bp2 - 1) and (min-resolution: $hd-mr) { @content; }
+  
+
+  } @else if $media == md {
+    @media only screen and (min-width: $bp2) { @content; }
+
+  } @else if $media == md-hd {
+    @media only screen and (min-width: $bp2) and (-webkit-min-device-pixel-ratio: $hd-dpr), only screen and (min-width: $bp2) and (min-resolution: $hd-mr) { @content; }  
+
+  } @else if $media == md-only {
+    @media only screen and (min-width: $bp2) and (max-width: $bp3 - 1) { @content; }
+  
+  } @else if $media == md-only-hd {
+    @media only screen and (min-width: $bp2) and (max-width: $bp3 - 1) and (-webkit-min-device-pixel-ratio: $hd-dpr), only screen and (min-width: $bp2) and (max-width: $bp3 - 1) and (min-resolution: $hd-mr) { @content; }
+     
+
+  } @else if $media == lg {
+    @media only screen and (min-width: $bp3) { @content; }
+
+  } @else if $media == lg-hd {
+    @media only screen and (min-width: $bp3) and (-webkit-min-device-pixel-ratio: $hd-dpr), only screen and (min-width: $bp3) and (min-resolution: $hd-mr) { @content; }
+
+  } @else if $media == lg-only {
+    @media only screen and (min-width: $bp3) and (max-width: $bp4 - 1) { @content; }   
+
+  } @else if $media == lg-only-hd {
+    @media only screen and (min-width: $bp3) and (max-width: $bp4 - 1) and (-webkit-min-device-pixel-ratio: $hd-dpr), only screen and (min-width: $bp3) and (max-width: $bpx - 1) and (min-resolution: $hd-mr) { @content; }   
+
+  
+  } @else if $media == xl {
+    @media only screen and (min-width: $bp4) { @content; }
+
+  } @else if $media == xl-hd {
+    @media only screen and (min-width: $bp4) and (-webkit-min-device-pixel-ratio: $hd-dpr), only screen and (min-width: $bp4) and (min-resolution: $hd-mr) { @content; }
+  
+  } @else if $media == xl-only {
+    @media only screen and (min-width: $bp4) and (max-width: $bpx - 1) { @content; }   
+
+  } @else if $media == xl-only-hd {
+    @media only screen and (min-width: $bp4) and (max-width: $bpx - 1) and (-webkit-min-device-pixel-ratio: $hd-dpr), only screen and (min-width: $bp3) and (max-width: $bpx - 1) and (min-resolution: $hd-mr) { @content; }
+  
+
+  } @else if $media == max {
+    @media only screen and (min-width: $bpx) { @content; }   
+  
+  
+
+  
+  } @else if $media == screen {
+    @media only screen { @content; }
+  
+
+  } @else if $media == print {
+    @media print { @content; }
+  
+
+  }
+ 
+}

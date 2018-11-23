@@ -1,0 +1,95 @@
+---
+id: "style_layout_structure_nav"
+name: "Structure (with left navigation)"
+showSiteNav: true
+---
+
+{% extends "_layouts/framework.njk" %}
+
+
+{% block content %}
+
+<h1>{{ name }}</h1>
+
+<h2>With left navigation</h2>
+
+<div class="row">
+  <h3>1. Row with <span class="debug-row-gutter"></span> gutters</h3>
+  <p>Row gutters are specified <b>globally</b> as a % of the whole browser width. Row gutters can have different % values at each layout break.</p>
+  <p><code>&lt;div class=&quot;<b>row</b>&quot;&gt;</code></p>
+  
+  <div class="container-wrap">
+    <p>[1] <code>&lt;div class=&quot;<b>container-wrap</b>&quot;&gt;</code></p>
+    <p>The container wrapper just takes up the rest of the available space.</p>
+
+    <div class="container">
+      <h4>1a. Container with <span class="debug-container-outer-gutter"></span> outer gutters and <span class="debug-container-inner-gutter"></span> inner gutters</h4>
+      <p>Container gutters are specified <b>globally</b> as a % of the whole browser width. Containers can have different % values for <b>outer</b> and <b>inner</b> gutters. Container gutters can have different % values at each layout break.</p>
+      <p><code>&lt;div class=&quot;<b>container</b>&quot;&gt;</code></p>
+      {% include "_includes/_samples.njk" %}
+      <p><code>&lt;/div&gt;</code></p>
+    </div>
+
+    <div class="container-bleed">
+      <h4>1b. Container with no gutters</h4>
+      <p>Containers can be set to have no outer or inner gutters.</p>
+      <p><code>&lt;div class=&quot;<b>container-bleed</b>&quot;&gt;</code></p>
+      {% include "_includes/_samples.njk" %}
+      <p><code>&lt;/div&gt;</code></p>
+    </div>
+
+    <p><code>&lt;/div&gt;</code></p>
+
+  </div>
+
+  <div class="navigation-wrap">
+    <h3>Navigation <span class="debug-navigation-width"></span></h3>
+    <p>[2] <code>&lt;div class=&quot;<b>navigation-wrap</b>&quot;&gt;</code></p>
+    <p>Width of navigation is specified as a % of the whole browser width, and can be different for each layout break.</p>
+    <p><code>&lt;/div&gt;</code></p>
+  </div>
+
+  <p style="clear: both;"><code>&lt;/div&gt;</code></p>
+
+</div>
+
+
+
+
+<div class="row-bleed">
+  <h3>2. Row with no gutters</h3>
+  <p><code>&lt;div class=&quot;<b>row</b>&quot;&gt;</code></p>
+
+  <div class="container-wrap">
+    <p>[1] <code>&lt;div class=&quot;<b>container-wrap</b>&quot;&gt;</code></p>
+
+    <div class="container">
+      <h4>2a. Container with <span class="debug-container-outer-gutter"></span> outer gutters and <span class="debug-container-inner-gutter"></span> inner gutters</h4>
+      <p><code>&lt;div class=&quot;<b>container</b>&quot;&gt;</code></p>
+      {% include "_includes/_samples.njk" %}
+      <p><code>&lt;/div&gt;</code></p>
+    </div>
+
+    <div class="container-bleed">
+      <h4>2b. Container with no gutters</h4>
+      <p><code>&lt;div class=&quot;<b>container-bleed</b>&quot;&gt;</code></p>
+      {% include "_includes/_samples.njk" %}
+      <p><code>&lt;/div&gt;</code></p>
+    </div>
+
+    <p><code>&lt;/div&gt;</code></p>
+
+  </div>
+
+  <div class="navigation-wrap">
+    <p>[2] <code>&lt;div class=&quot;<b>navigation-wrap</b>&quot;&gt;</code></p>
+    <p>navigation</p>
+    <p><code>&lt;/div&gt;</code></p>
+  </div>
+
+  <p style="clear: both;"><code>&lt;/div&gt;</code></p>
+
+</div>
+
+
+{% endblock %}

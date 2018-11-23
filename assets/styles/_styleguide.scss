@@ -1,0 +1,227 @@
+@if ($debug == true) {
+
+$stylenavwidth: 296px;
+$stylenavbg: #fff;
+$stylenavfg: #777;
+$stylenav: #444;
+$stylenav-current: #000;
+$stylenav-border: #f0f0f0;
+$stylenav-transition: .2s ease-out;
+
+#stylenav {
+  @include bg-opacity(0, 0, 0, .2, '#CC000000', 'CCCCCC');
+
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  height: 44px;
+  left: 0;
+  line-height: 44px;
+  margin-top: -22px;
+  position: fixed;
+  text-align: center;
+  text-decoration: none;
+  top: 50%;
+  width: 24px;
+
+  &:hover {
+    @include bg-opacity(0, 0, 0, .4, '#99000000', '999999');
+    filter: none;
+  }
+
+  &:before {
+    content: '\0203A';
+  }
+
+  .showstyleguide & {
+    background-color: $stylenavbg;
+    color: $stylenavfg;
+    filter: none;
+    //left: $stylenavwidth;
+    transform: translate($stylenavwidth, 0);
+    opacity: 1;
+    z-index: 99991;
+
+    &:before {
+      content: '\02039';
+    }
+  }
+}
+
+#viewport, #navigation-style, #stylenav {
+  -webkit-transition: $stylenav-transition;
+  -moz-transition: $stylenav-transition;
+  -o-transition: $stylenav-transition;
+  transition: $stylenav-transition;
+}
+
+
+#navigation-style {
+  background-color: $stylenavbg;
+  color: $stylenavfg;
+  //display: block;
+  height: 100%;
+  left: -$stylenavwidth;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  width: $stylenavwidth;
+  z-index: 99990;
+
+  .showstyleguide & {
+    box-shadow: 0 0 130px rgba(0, 0, 0, .4);
+    //display: block;
+    //left: 0;
+    transform: translate($stylenavwidth, 0);
+  }
+}
+
+
+.showstyleguide #viewport {
+  //left: $stylenavwidth;
+  position: relative;
+  transform: translate($stylenavwidth,0);
+}
+
+.showstyleguide {
+  overflow-x: hidden;
+}
+
+#stylenav-inner {
+  margin: 11px;
+
+  > ul { border-bottom: 1px solid $stylenav-border; }
+
+  ul {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+
+    li {
+
+      li {
+        border-top: 1px solid $stylenav-border;
+        font-weight: normal;
+        text-transform: none;
+
+        li {
+          border-top: none;
+        }
+      }
+    }
+
+    ul {
+      font-size: .8em;
+
+      ul {
+        font-size: 1em;
+      }
+
+    }
+
+    /* ------------------ */
+    /*
+        Change initial visible depth here, eg change "li li li ul" to "li li ul" to hide all sublevels initially
+    */
+
+    li li ul {
+      display: none;
+    }
+
+    /* ------------------ */
+
+    li.current > ul {
+      display: block !important;
+    }
+
+  }
+
+  li {
+    padding: 0;
+    position: relative;
+
+    a, 
+    span {
+      color: $stylenav;
+      display: block;
+      padding: 5px 0;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    span {
+      color: $stylenav-current;
+
+      &.style-label {
+        color: $stylenavfg;
+        cursor: pointer;
+        font-weight: normal;
+      }
+    }
+
+    li {
+      padding-left: 24px;
+
+      span { 
+        font-weight: bold; 
+      }
+
+      li {
+        a, 
+        span {
+          padding: 3px 0;
+        }
+      }
+    }
+  }
+
+  em {
+    border-radius: 3px;
+    display: block;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    height: 18px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 6px;
+    width: 18px;
+
+    &:before { 
+      content: '\2023'; //"\02192"; 
+      display: block;
+      font-size: 24px;
+      height: 18px;
+      left: 0;
+      line-height: 18px;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      width: 18px;
+    }
+  }
+
+  li li li em {
+    top: 4px;
+  }
+
+  li.current > em:before { 
+    background-color: #999;
+    color: #fff;
+    transform: rotate(90deg);
+  }
+
+  li.current > em {
+    background-color: $stylenavfg;
+    border-color: $stylenavfg;
+  }
+
+}
+
+}

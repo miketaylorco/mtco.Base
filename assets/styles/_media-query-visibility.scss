@@ -1,0 +1,53 @@
+.mq { 
+  bottom: 0; 
+  display: none; 
+  left: 0; 
+  overflow: hidden;
+  position: fixed; 
+  
+  .debug & {
+    font-size: 0.82em; padding: 6px 12px; float: left; background-color: #ccc; color:#333; opacity: 0.7; font-weight: normal; text-transform: uppercase; z-index: 99999;
+  }
+}
+
+@include respond-to(max) {
+  #mq-max { display: block; 
+    .debug &:before { content: "max"; } 
+    .debug & { background-color: #fe8; } 
+  }
+}
+
+@include respond-to(xl-only) {
+  #mq-xl { display: block; 
+    .debug &:before { content: "xl"; } 
+    .debug & { background-color: #ddf; } 
+  }
+}
+
+@include respond-to(lg-only) {
+  #mq-lg { display: block; 
+    .debug &:before { content: "lg"; } 
+    .debug & { background-color: #ecd; } 
+  }
+}
+
+@include respond-to(md-only) {
+  #mq-md { display: block; 
+    .debug &:before { content: "md"; } 
+    .debug & { background-color: #dea; } 
+  }
+}
+
+@include respond-to(sm-only) {
+  #mq-sm { display: block; 
+    .debug &:before { content: "sm"; } 
+    .debug & { background-color: #bce; } 
+  }
+}
+
+@include respond-to(xs-only) {
+  #mq-xs { display: block; 
+    .debug &:before { content: "xs"; } 
+    .debug & { background-color: #aed; } 
+  }
+}

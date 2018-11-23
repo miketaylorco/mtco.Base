@@ -1,0 +1,2789 @@
+// 88888888ba,                   ad88                           88
+// 88      `"8b                 d8"                             88    ,d
+// 88        `8b                88                              88    88
+// 88         88   ,adPPYba,  MM88MMM  ,adPPYYba,  88       88  88  MM88MMM
+// 88         88  a8P_____88    88     ""     `Y8  88       88  88    88
+// 88         8P  8PP"""""""    88     ,adPPPPP88  88       88  88    88
+// 88      .a8P   "8b,   ,aa    88     88,    ,88  "8a,   ,a88  88    88,
+// 88888888Y"'     `"Ybbd8"'    88     `"8bbdP"Y8   `"YbbdP'Y8  88    "Y888
+
+// ===============================================================
+// default styles, based on "XS" styles being served by default
+
+
+.row,
+.row-bleed {
+  @include clearfix;
+}
+
+.container,
+.container-bleed {
+  @include clearfix;
+}
+
+.row {
+  padding-left: $rg;
+  padding-right: $rg;
+}
+
+.container {
+  padding-left: percentage($cog / $rcw);
+  padding-right: percentage($cdg / $rcw);
+
+  .row-bleed & {
+    padding-left: $cog;
+    padding-right: $cdg;
+  }
+}
+
+
+@if ($nav == true) {
+
+  @if ($nw == 0) {
+    .navigation-wrap {
+      display: none; // <-- just hide it?
+
+      @if ($show-nav-nojs == true) {
+        .no-js & {
+          display: block;
+          float: none;
+          width: auto;
+        }
+      }
+
+    }
+  } @else {
+
+    .show-nav .navigation-wrap {
+
+      display: block;
+      float: $wrapfloat;
+      width: percentage($nw / $rcw);
+
+    }
+
+    .show-nav .row-bleed .navigation-wrap {
+      width: $nw;
+    }
+
+    .hide-nav .navigation-wrap {
+      display: none; // <-- just hide it?
+
+      @if ($show-nav-nojs == true) {
+        .no-js & {
+          display: block;
+          float: none;
+          width: auto;
+        }
+      }
+    }
+
+    .show-nav .container-wrap {
+
+      @include clearfix;
+
+      float: $wrapfloat;
+      width: percentage($nrcw / $rcw);
+
+      .container {
+        padding-left: percentage($cog / $nrcw);
+        padding-right: percentage($cdg / $nrcw);      
+      }
+
+    }
+
+    .show-nav .row-bleed .container-wrap {
+      width: $nrbcw;
+
+      .container {
+        padding-left: percentage($cog / $nrbcw);
+        padding-right: percentage($cdg / $nrbcw);      
+      }
+
+    }
+
+  }
+}
+
+
+.row-bleed,
+.container-bleed {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+
+
+
+// blocks
+
+.block {
+  @include context(rc) { margin-right: percentage($cig / $rciw); }
+  @include context(rbc) { margin-right: percentage($cig / $rbciw); }
+  @include context(nrc) { margin-right: percentage($cig / $nrciw); }
+  @include context(nrbc) { margin-right: percentage($cig / $nrbciw); }
+  @include context(cb) { margin-right: 0 !important; }
+}
+
+.c6 {
+  float: left;
+  @include context(rc) { width: percentage($rc-c6 / $rciw); }
+  @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+  @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+  @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+  @include context(cb) { width: 50% !important; }
+}
+
+.c6 {
+  float: left;
+  &.switch {
+    float: right;
+  }
+}
+
+
+// inset
+@if ($inset == true) {
+
+  // at mobile (XS), inset goes inside a clean block (c10 only comes in at md, lg or xl)
+  // and can only be a c6
+  .inset {
+
+    &.c6 {
+      float: right;
+      @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+      @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+      @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+      @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+      //@include context(cb) { width: 50% !important; }
+    }
+
+  }
+
+}
+
+@if ($offset == true) {
+
+  .offset-c3 {
+    @include context(rc) { margin-left: percentage(($rc-c3 + $cig) / $rciw); }
+    @include context(rbc) { margin-left: percentage(($rbc-c3 + $cig) / $rbciw); }
+    @include context(nrc) { margin-left: percentage(($nrc-c3 + $cig) / $nrciw); }
+    @include context(nrbc) { margin-left: percentage(($nrbc-c3 + $cig) / $nrbciw); }
+    @include context(cb) { margin-left: 25% !important; }
+  }
+
+}
+
+
+.clear-all {
+  clear: left !important;
+}
+
+
+
+// 88        88  88888888ba,
+// 88        88  88      `"8b
+// 88        88  88        `8b
+// 88aaaaaaaa88  88         88
+// 88""""""""88  88         88
+// 88        88  88         8P
+// 88        88  88      .a8P
+// 88        88  88888888Y"'
+
+//@include respond-to(hd) {
+//}
+
+
+
+
+                                                                                                                                         
+//  ad88888ba   88b           d88                                       88                         88           88                          
+// d8"     "8b  888b         d888                                       88                         ""           88                          
+// Y8,          88`8b       d8'88                                       88                                      88                          
+// `Y8aaaaa,    88 `8b     d8' 88     ,adPPYYba,  8b,dPPYba,    ,adPPYb,88     8b      db      d8  88   ,adPPYb,88   ,adPPYba,  8b,dPPYba,  
+//   `"""""8b,  88  `8b   d8'  88     ""     `Y8  88P'   `"8a  a8"    `Y88     `8b    d88b    d8'  88  a8"    `Y88  a8P_____88  88P'   "Y8  
+//         `8b  88   `8b d8'   88     ,adPPPPP88  88       88  8b       88      `8b  d8'`8b  d8'   88  8b       88  8PP"""""""  88          
+// Y8a     a8P  88    `888'    88     88,    ,88  88       88  "8a,   ,d88       `8bd8'  `8bd8'    88  "8a,   ,d88  "8b,   ,aa  88          
+//  "Y88888P"   88     `8'     88     `"8bbdP"Y8  88       88   `"8bbdP"Y8         YP      YP      88   `"8bbdP"Y8   `"Ybbd8"'  88          
+                                                                                                                                         
+@include respond-to(sm) {
+
+  @include layout-variables(sm);
+
+  .row {
+    padding-left: $rg;
+    padding-right: $rg;
+  }
+
+  .container {
+    padding-left: percentage($cog / $rcw);
+    padding-right: percentage($cdg / $rcw);
+
+    .row-bleed & {
+      padding-left: $cog;
+      padding-right: $cdg;
+    }
+  }
+
+  @if ($nav == true) {
+
+    @if ($nw == 0) {
+      .show-nav .navigation-wrap {
+        display: none; // <-- just hide it?
+
+        @if ($show-nav-nojs == true) {
+          .no-js & {
+            display: block;
+            float: none;
+            width: auto;
+          }
+        }
+
+      }
+
+      .show-nav .container-wrap {
+        float: none;
+        width: auto;
+      }
+
+    } @else {
+
+      .show-nav .navigation-wrap {
+        display: block;
+        width: percentage($nw / $rcw);
+      }
+
+      .show-nav .row-bleed .navigation-wrap {
+        width: $nw;
+      }
+
+      .show-nav .container-wrap {
+        float: $wrapfloat;
+        width: percentage($nrcw / $rcw);
+
+        .container {
+          padding-left: percentage($cog / $nrcw);
+          padding-right: percentage($cdg / $nrcw);      
+        }
+
+      }
+
+      .show-nav .row-bleed .container-wrap {
+        width: $nrbcw;
+
+        .container {
+          padding-left: percentage($cog / $nrbcw);
+          padding-right: percentage($cdg / $nrbcw);      
+        }
+
+      }
+
+    }
+
+  }
+
+
+  .block {
+    @include context(rc) { margin-right: percentage($cig / $rciw); }
+    @include context(rbc) { margin-right: percentage($cig / $rbciw); }
+    @include context(nrc) { margin-right: percentage($cig / $nrciw); }
+    @include context(nrbc) { margin-right: percentage($cig / $nrbciw); }
+    @include context(cb) { margin-right: 0 !important; }
+  }
+
+  .c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+
+  .sm-c8 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c8 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c8 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c8 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c8 / $nrbciw); }
+    @include context(cb) { width: ((100% / 3) * 2) !important; }
+  }
+
+  .sm-c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+  .sm-c4 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c4 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c4 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c4 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c4 / $nrbciw); }
+    @include context(cb) { width: (100% / 3) !important; }
+  }
+
+
+  .sm-c8,
+  .sm-c6,
+  .sm-c4 {
+    float: left;
+    &.sm-switch {
+      float: right;
+    }
+  }
+
+
+  // inset
+  @if ($inset == true) {
+
+    // at small (SM), inset is still inside a clean (full width) block (c10 only comes in at md, lg or xl)
+    // and can be a c6 or a c4
+    .inset {
+
+
+      &.c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+
+      &.sm-c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+      &.sm-c4 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c4 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c4 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c4 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c4 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: (100% / 3) !important; }
+      }
+
+    }
+
+  }
+
+  @if ($offset == true) {
+
+    .sm-offset-c2 {
+      @include context(rc) { margin-left: percentage(($rc-c2 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c2 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c2 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c2 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: ((100% / 12) * 2) !important; }
+    }
+
+    .offset-c3,
+    .sm-offset-c3 {
+      @include context(rc) { margin-left: percentage(($rc-c3 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c3 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c3 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c3 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: 25% !important; }
+    }
+
+    .sm-offset-c4 {
+      @include context(rc) { margin-left: percentage(($rc-c4 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c4 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c4 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c4 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 3) !important; }
+    }
+
+  }
+
+
+  .clear-sm-up {
+    clear: left;
+  }
+
+
+}
+
+//@include respond-to(sm-hd) {
+//}
+
+
+
+
+                                                                                                                                           
+// 88b           d88  88888888ba,                                         88                         88           88                          
+// 888b         d888  88      `"8b                                        88                         ""           88                          
+// 88`8b       d8'88  88        `8b                                       88                                      88                          
+// 88 `8b     d8' 88  88         88     ,adPPYYba,  8b,dPPYba,    ,adPPYb,88     8b      db      d8  88   ,adPPYb,88   ,adPPYba,  8b,dPPYba,  
+// 88  `8b   d8'  88  88         88     ""     `Y8  88P'   `"8a  a8"    `Y88     `8b    d88b    d8'  88  a8"    `Y88  a8P_____88  88P'   "Y8  
+// 88   `8b d8'   88  88         8P     ,adPPPPP88  88       88  8b       88      `8b  d8'`8b  d8'   88  8b       88  8PP"""""""  88          
+// 88    `888'    88  88      .a8P      88,    ,88  88       88  "8a,   ,d88       `8bd8'  `8bd8'    88  "8a,   ,d88  "8b,   ,aa  88          
+// 88     `8'     88  88888888Y"'       `"8bbdP"Y8  88       88   `"8bbdP"Y8         YP      YP      88   `"8bbdP"Y8   `"Ybbd8"'  88          
+                                                                                                                                           
+@include respond-to(md) {
+
+  @include layout-variables(md);
+
+  .row {
+    padding-left: $rg;
+    padding-right: $rg;
+  }
+
+  .container {
+    padding-left: percentage($cog / $rcw);
+    padding-right: percentage($cdg / $rcw);
+
+    .row-bleed & {
+      padding-left: $cog;
+      padding-right: $cdg;
+    }
+  }
+
+  @if ($nav == true) {
+
+    @if ($nw == 0) {
+      .show-nav .navigation-wrap {
+        display: none; // <-- just hide it?
+
+        @if ($show-nav-nojs == true) {
+          .no-js & {
+            display: block;
+            float: none;
+            width: auto;
+          }
+        }
+      }
+
+      .show-nav .container-wrap {
+        float: none;
+        width: auto;
+      }
+
+    } @else {
+
+      .show-nav .navigation-wrap {
+        display: block;
+        float: $wrapfloat;
+        width: percentage($nw / $rcw);
+      }
+
+      .show-nav .row-bleed .navigation-wrap {
+        width: $nw;
+      }
+
+      .show-nav .container-wrap {
+        float: $wrapfloat;
+        width: percentage($nrcw / $rcw);
+
+        .container {
+          padding-left: percentage($cog / $nrcw);
+          padding-right: percentage($cdg / $nrcw);      
+        }
+
+      }
+
+      .show-nav .row-bleed .container-wrap {
+        width: $nrbcw;
+
+        .container {
+          padding-left: percentage($cog / $nrbcw);
+          padding-right: percentage($cdg / $nrbcw);      
+        }
+
+      }
+
+
+    }
+
+  }
+
+
+  .block {
+    @include context(rc) { margin-right: percentage($cig / $rciw); }
+    @include context(rbc) { margin-right: percentage($cig / $rbciw); }
+    @include context(nrc) { margin-right: percentage($cig / $nrciw); }
+    @include context(nrbc) { margin-right: percentage($cig / $nrbciw); }
+    @include context(cb) { margin-right: 0 !important; }
+  }
+
+  .c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+
+
+  .sm-c8 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c8 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c8 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c8 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c8 / $nrbciw); }
+    @include context(cb) { width: ((100% / 3) * 2) !important; }
+  }
+
+  .sm-c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+  .sm-c4 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c4 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c4 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c4 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c4 / $nrbciw); }
+    @include context(cb) { width: (100% / 3) !important; }
+  }
+
+
+
+  .md-c10 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c10 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c10 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c10 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c10 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 10) !important; }
+  }
+
+  .md-c9 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c9 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c9 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c9 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c9 / $nrbciw); }
+    @include context(cb) { width: 75% !important; }
+  }
+
+  .md-c8 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c8 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c8 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c8 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c8 / $nrbciw); }
+    @include context(cb) { width: ((100% / 3) * 2) !important; }
+  }
+
+  .md-c7 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c7 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c7 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c7 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c7 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 7) !important; }
+  }
+
+  .md-c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+  .md-c5 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c5 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c5 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c5 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c5 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 5) !important; }
+  }
+
+  .md-c4 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c4 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c4 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c4 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c4 / $nrbciw); }
+    @include context(cb) { width: (100% / 3) !important; }
+  }
+
+  .md-c3 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c3 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c3 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c3 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c3 / $nrbciw); }
+    @include context(cb) { width: 25% !important; }
+  }
+
+
+  .md-c10,
+  .md-c9,
+  .md-c8,
+  .md-c7,
+  .md-c6,
+  .md-c5,
+  .md-c4,
+  .md-c3 {
+    float: left;
+    &.md-switch {
+      float: right;
+    }
+  }
+
+
+  // inset
+  @if ($inset == true) {
+
+    .inset {
+
+      &.c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+
+      &.sm-c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+      &.sm-c4 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c4 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c4 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c4 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c4 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: (100% / 3) !important; }
+      }
+
+      &.md-c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+      &.md-c4 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c4 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c4 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c4 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c4 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: (100% / 3) !important; }
+      }
+
+    }
+
+
+    .md-c10 {
+      @include context(rc) { 
+        .inset {
+          margin-right: (0 - percentage(($rc-c2 + $cig) / $rc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: percentage($rc-c6 / $rc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: percentage($rc-c4 / $rc-c10);
+          }
+
+        }
+
+        &.md-offset-c1 .inset {
+          margin-right: (0 - percentage(($rc-c1 + $cig) / $rc-c10));
+        }
+      }
+
+      @include context(rbc) { 
+        .inset {
+          margin-right: (0 - percentage(($rbc-c2 + $cig) / $rbc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: percentage($rbc-c6 / $rbc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: percentage($rbc-c4 / $rbc-c10);
+          }
+
+        }
+
+        &.md-offset-c1 .inset {
+          margin-right: (0 - percentage(($rbc-c1 + $cig) / $rbc-c10));
+        }
+      }
+
+      @include context(nrc) { 
+        .inset {
+          margin-right: (0 - percentage(($nrc-c2 + $cig) / $nrc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: percentage($nrc-c6 / $nrc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: percentage($nrc-c4 / $nrc-c10);
+          }
+
+        }
+
+        &.md-offset-c1 .inset {
+          margin-right: (0 - percentage(($nrc-c1 + $cig) / $nrc-c10));
+        }
+      }
+      
+      @include context(nrbc) { 
+        .inset {
+          margin-right: (0 - percentage(($nrbc-c2 + $cig) / $nrbc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: percentage($nrbc-c6 / $nrbc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: percentage($nrbc-c4 / $nrbc-c10);
+          }
+
+        }
+
+        &.md-offset-c1 .inset {
+          margin-right: (0 - percentage(($nrbc-c1 + $cig) / $nrbc-c10));
+        }
+      }
+
+      @include context(cb) { 
+        .inset {
+          margin-right: -20% !important;
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: 60% !important;
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: 40% !important;
+          }
+
+        }
+
+        &.md-offset-c1 .inset {
+          margin-right: -10% !important
+        }
+      }
+    }
+
+
+
+  }
+
+
+
+
+  @if ($offset == true) {
+
+    .sm-offset-c2 {
+      @include context(rc) { margin-left: percentage(($rc-c2 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c2 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c2 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c2 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: ((100% / 12) * 2) !important; }
+    }
+
+    .offset-c3,
+    .sm-offset-c3 {
+      @include context(rc) { margin-left: percentage(($rc-c3 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c3 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c3 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c3 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: 25% !important; }
+    }
+
+    .sm-offset-c4 {
+      @include context(rc) { margin-left: percentage(($rc-c4 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c4 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c4 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c4 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 3) !important; }
+    }
+
+    .md-offset-c1 {
+      @include context(rc) { margin-left: percentage(($rc-c1 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c1 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c1 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c1 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 12) !important; }
+    }
+
+    .md-offset-c2 {
+      @include context(rc) { margin-left: percentage(($rc-c2 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c2 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c2 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c2 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: ((100% / 12) * 2) !important; }
+    }
+
+    .md-offset-c3 {
+      @include context(rc) { margin-left: percentage(($rc-c3 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c3 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c3 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c3 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: 25% !important; }
+    }
+
+    .md-offset-c4 {
+      @include context(rc) { margin-left: percentage(($rc-c4 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c4 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c4 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c4 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 3) !important; }
+    }
+
+  }
+
+  .clear-md-up {
+    clear: left;
+  }
+
+
+}
+
+//@include respond-to(md-hd) {
+//}
+
+
+
+
+                                                                                                                                   
+// 88           ,ad8888ba,                                        88                         88           88                          
+// 88          d8"'    `"8b                                       88                         ""           88                          
+// 88         d8'                                                 88                                      88                          
+// 88         88                ,adPPYYba,  8b,dPPYba,    ,adPPYb,88     8b      db      d8  88   ,adPPYb,88   ,adPPYba,  8b,dPPYba,  
+// 88         88      88888     ""     `Y8  88P'   `"8a  a8"    `Y88     `8b    d88b    d8'  88  a8"    `Y88  a8P_____88  88P'   "Y8  
+// 88         Y8,        88     ,adPPPPP88  88       88  8b       88      `8b  d8'`8b  d8'   88  8b       88  8PP"""""""  88          
+// 88          Y8a.    .a88     88,    ,88  88       88  "8a,   ,d88       `8bd8'  `8bd8'    88  "8a,   ,d88  "8b,   ,aa  88          
+// 88888888888  `"Y88888P"      `"8bbdP"Y8  88       88   `"8bbdP"Y8         YP      YP      88   `"8bbdP"Y8   `"Ybbd8"'  88          
+                                                                                                                                   
+@include respond-to(lg) {
+
+  @include layout-variables(lg);
+
+  .row {
+    padding-left: $rg;
+    padding-right: $rg;
+  }
+
+  .container {
+    padding-left: percentage($cog / $rcw);
+    padding-right: percentage($cdg / $rcw);
+
+    .row-bleed & {
+      padding-left: $cog;
+      padding-right: $cdg;
+    }
+  }
+
+
+  @if ($nav == true) {
+
+    @if ($nw == 0) {
+      .show-nav .navigation-wrap {
+        display: none; // <-- just hide it?
+
+        @if ($show-nav-nojs == true) {
+          .no-js & {
+            display: block;
+            float: none;
+            width: auto;
+          }
+        }
+      }
+
+      .show-nav .container-wrap {
+        float: none;
+        width: auto;
+      }
+
+    } @else {
+
+      .show-nav .navigation-wrap {
+        display: block;
+        width: percentage($nw / $rcw);
+      }
+
+      .show-nav .row-bleed .navigation-wrap {
+        width: $nw;
+      }
+
+      .show-nav .container-wrap {
+        float: $wrapfloat;
+        width: percentage($nrcw / $rcw);
+
+        .container {
+          padding-left: percentage($cog / $nrcw);
+          padding-right: percentage($cdg / $nrcw);      
+        }
+
+      }
+
+      .show-nav .row-bleed .container-wrap {
+        width: $nrbcw;
+
+        .container {
+          padding-left: percentage($cog / $nrbcw);
+          padding-right: percentage($cdg / $nrbcw);      
+        }
+
+      }
+
+    }
+
+  }
+
+
+  .block {
+    @include context(rc) { margin-right: percentage($cig / $rciw); }
+    @include context(rbc) { margin-right: percentage($cig / $rbciw); }
+    @include context(nrc) { margin-right: percentage($cig / $nrciw); }
+    @include context(nrbc) { margin-right: percentage($cig / $nrbciw); }
+    @include context(cb) { margin-right: 0 !important; }
+  }
+
+
+  .c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+
+  .sm-c8 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c8 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c8 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c8 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c8 / $nrbciw); }
+    @include context(cb) { width: ((100% / 3) * 2) !important; }
+  }
+
+  .sm-c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+  .sm-c4 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c4 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c4 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c4 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c4 / $nrbciw); }
+    @include context(cb) { width: (100% / 3) !important; }
+  }
+
+  .sm-c3 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c3 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c3 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c3 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c3 / $nrbciw); }
+    @include context(cb) { width: 25% !important; }
+  }
+
+
+  .md-c10 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c10 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c10 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c10 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c10 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 10) !important; }
+  }
+
+  .md-c9 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c9 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c9 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c9 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c9 / $nrbciw); }
+    @include context(cb) { width: 75% !important; }
+  }
+
+  .md-c8 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c8 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c8 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c8 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c8 / $nrbciw); }
+    @include context(cb) { width: ((100% / 3) * 2) !important; }
+  }
+
+  .md-c7 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c7 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c7 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c7 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c7 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 7) !important; }
+  }
+
+  .md-c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+  .md-c5 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c5 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c5 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c5 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c5 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 5) !important; }
+  }
+
+  .md-c4 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c4 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c4 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c4 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c4 / $nrbciw); }
+    @include context(cb) { width: (100% / 3) !important; }
+  }
+
+  .md-c3 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c3 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c3 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c3 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c3 / $nrbciw); }
+    @include context(cb) { width: 25% !important; }
+  }
+
+
+
+
+
+  .lg-c10 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c10 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c10 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c10 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c10 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 10) !important; }
+  }
+
+  .lg-c9 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c9 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c9 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c9 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c9 / $nrbciw); }
+    @include context(cb) { width: 75% !important; }
+  }
+
+  .lg-c8 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c8 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c8 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c8 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c8 / $nrbciw); }
+    @include context(cb) { width: ((100% / 3) * 2) !important; }
+  }
+
+  .lg-c7 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c7 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c7 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c7 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c7 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 7) !important; }
+  }
+
+  .lg-c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+  .lg-c5 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c5 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c5 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c5 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c5 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 5) !important; }
+  }
+
+  .lg-c4 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c4 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c4 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c4 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c4 / $nrbciw); }
+    @include context(cb) { width: (100% / 3) !important; }
+  }
+
+  .lg-c3 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c3 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c3 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c3 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c3 / $nrbciw); }
+    @include context(cb) { width: 25% !important; }
+  }
+
+
+  .lg-c10,
+  .lg-c9,
+  .lg-c8,
+  .lg-c7,
+  .lg-c6,
+  .lg-c5,
+  .lg-c4,
+  .lg-c3 {
+    float: left;
+    &.lg-switch {
+      float: right;
+    }
+  }
+
+
+  // inset
+  @if ($inset == true) {
+
+    // at small (SM), inset is still inside a clean (full width) block (c10 only comes in at md, lg or xl)
+    // and can be a c6 or a c4
+    .inset {
+
+
+      &.c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+
+      &.sm-c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+      &.sm-c4 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c4 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c4 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c4 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c4 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: (100% / 3) !important; }
+      }
+
+      &.md-c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+      &.md-c4 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c4 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c4 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c4 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c4 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: (100% / 3) !important; }
+      }
+
+      &.lg-c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+      &.lg-c4 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c4 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c4 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c4 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c4 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: (100% / 3) !important; }
+      }
+
+    }
+
+
+
+    .md-c10 {
+      @include context(rc) { 
+        .inset {
+          margin-right: (0 - percentage(($rc-c2 + $cig) / $rc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: percentage($rc-c6 / $rc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: percentage($rc-c4 / $rc-c10);
+          }
+
+        }
+
+        &.md-offset-c1 .inset,
+        &.lg-offset-c1 .inset {
+          margin-right: (0 - percentage(($rc-c1 + $cig) / $rc-c10));
+        }
+      }
+
+      @include context(rbc) { 
+        .inset {
+          margin-right: (0 - percentage(($rbc-c2 + $cig) / $rbc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: percentage($rbc-c6 / $rbc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: percentage($rbc-c4 / $rbc-c10);
+          }
+
+        }
+
+        &.md-offset-c1 .inset,
+        &.lg-offset-c1 .inset {
+          margin-right: (0 - percentage(($rbc-c1 + $cig) / $rbc-c10));
+        }
+      }
+
+      @include context(nrc) { 
+        .inset {
+          margin-right: (0 - percentage(($nrc-c2 + $cig) / $nrc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: percentage($nrc-c6 / $nrc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: percentage($nrc-c4 / $nrc-c10);
+          }
+
+        }
+
+        &.md-offset-c1 .inset,
+        &.lg-offset-c1 .inset {
+          margin-right: (0 - percentage(($nrc-c1 + $cig) / $nrc-c10));
+        }
+      }
+      
+      @include context(nrbc) { 
+        .inset {
+          margin-right: (0 - percentage(($nrbc-c2 + $cig) / $nrbc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: percentage($nrbc-c6 / $nrbc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: percentage($nrbc-c4 / $nrbc-c10);
+          }
+
+        }
+
+        &.md-offset-c1 .inset,
+        &.lg-offset-c1 .inset {
+          margin-right: (0 - percentage(($nrbc-c1 + $cig) / $nrbc-c10));
+        }
+      }
+
+      @include context(cb) { 
+        .inset {
+          margin-right: -20% !important;
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: 60% !important;
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: 40% !important;
+          }
+
+        }
+
+        &.md-offset-c1 .inset,
+        &.lg-offset-c1 .inset {
+          margin-right: -10% !important;
+        }
+      }
+    }
+
+
+
+    .lg-c10 {
+      @include context(rc) { 
+        .inset {
+          margin-right: (0 - percentage(($rc-c2 + $cig) / $rc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6 {
+            width: percentage($rc-c6 / $rc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4 {
+            width: percentage($rc-c4 / $rc-c10);
+          }
+
+        }
+
+        &.lg-offset-c1 .inset {
+          margin-right: (0 - percentage(($rc-c1 + $cig) / $rc-c10));
+        }
+      }
+
+      @include context(rbc) { 
+        .inset {
+          margin-right: (0 - percentage(($rbc-c2 + $cig) / $rbc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6 {
+            width: percentage($rbc-c6 / $rbc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4 {
+            width: percentage($rbc-c4 / $rbc-c10);
+          }
+
+        }
+
+        &.lg-offset-c1 .inset {
+          margin-right: (0 - percentage(($rbc-c1 + $cig) / $rbc-c10));
+        }
+      }
+
+      @include context(nrc) { 
+        .inset {
+          margin-right: (0 - percentage(($nrc-c2 + $cig) / $nrc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6 {
+            width: percentage($nrc-c6 / $nrc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4 {
+            width: percentage($nrc-c4 / $nrc-c10);
+          }
+
+        }
+
+        &.lg-offset-c1 .inset {
+          margin-right: (0 - percentage(($nrc-c1 + $cig) / $nrc-c10));
+        }
+      }
+      
+      @include context(nrbc) { 
+        .inset {
+          margin-right: (0 - percentage(($nrbc-c2 + $cig) / $nrbc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6 {
+            width: percentage($nrbc-c6 / $nrbc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4 {
+            width: percentage($nrbc-c4 / $nrbc-c10);
+          }
+
+        }
+
+        &.lg-offset-c1 .inset {
+          margin-right: (0 - percentage(($nrbc-c1 + $cig) / $nrbc-c10));
+        }
+      }
+
+      @include context(cb) { 
+        .inset {
+          margin-right: -20% !important;
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6 {
+            width: 60% !important;
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4 {
+            width: 40% !important;
+          }
+
+        }
+
+        &.lg-offset-c1 .inset {
+          margin-right: -10% !important;
+        }
+      }
+    }
+
+  }
+
+
+
+
+
+  @if ($offset == true) {
+
+    .sm-offset-c2 {
+      @include context(rc) { margin-left: percentage(($rc-c2 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c2 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c2 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c2 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: ((100% / 12) * 2) !important; }
+    }
+
+    .offset-c3,
+    .sm-offset-c3 {
+      @include context(rc) { margin-left: percentage(($rc-c3 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c3 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c3 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c3 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: 25% !important; }
+    }
+
+    .sm-offset-c4 {
+      @include context(rc) { margin-left: percentage(($rc-c4 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c4 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c4 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c4 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 3) !important; }
+    }
+
+    .md-offset-c1 {
+      @include context(rc) { margin-left: percentage(($rc-c1 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c1 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c1 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c1 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 12) !important; }
+    }
+
+    .md-offset-c2 {
+      @include context(rc) { margin-left: percentage(($rc-c2 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c2 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c2 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c2 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: ((100% / 12) * 2) !important; }
+    }
+
+    .md-offset-c3 {
+      @include context(rc) { margin-left: percentage(($rc-c3 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c3 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c3 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c3 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: 25% !important; }
+    }
+
+    .md-offset-c4 {
+      @include context(rc) { margin-left: percentage(($rc-c4 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c4 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c4 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c4 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 3) !important; }
+    }
+
+    .lg-offset-c1 {
+      @include context(rc) { margin-left: percentage(($rc-c1 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c1 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c1 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c1 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 12) !important; }
+    }
+
+    .lg-offset-c2 {
+      @include context(rc) { margin-left: percentage(($rc-c2 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c2 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c2 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c2 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: ((100% / 12) * 2) !important; }
+    }
+
+    .lg-offset-c3 {
+      @include context(rc) { margin-left: percentage(($rc-c3 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c3 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c3 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c3 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: 25% !important; }
+    }
+
+    .lg-offset-c4 {
+      @include context(rc) { margin-left: percentage(($rc-c4 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c4 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c4 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c4 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 3) !important; }
+    }
+
+  }
+
+  .clear-lg-up {
+    clear: left;
+  }
+
+
+}
+
+//@include respond-to(lg-hd) {
+//}
+
+
+
+
+                                                                                                                                    
+// 8b        d8  88                                                88                         88           88                          
+//  Y8,    ,8P   88                                                88                         ""           88                          
+//   `8b  d8'    88                                                88                                      88                          
+//     Y88P      88              ,adPPYYba,  8b,dPPYba,    ,adPPYb,88     8b      db      d8  88   ,adPPYb,88   ,adPPYba,  8b,dPPYba,  
+//     d88b      88              ""     `Y8  88P'   `"8a  a8"    `Y88     `8b    d88b    d8'  88  a8"    `Y88  a8P_____88  88P'   "Y8  
+//   ,8P  Y8,    88              ,adPPPPP88  88       88  8b       88      `8b  d8'`8b  d8'   88  8b       88  8PP"""""""  88          
+//  d8'    `8b   88              88,    ,88  88       88  "8a,   ,d88       `8bd8'  `8bd8'    88  "8a,   ,d88  "8b,   ,aa  88          
+// 8P        Y8  88888888888     `"8bbdP"Y8  88       88   `"8bbdP"Y8         YP      YP      88   `"8bbdP"Y8   `"Ybbd8"'  88          
+                                                                                                                                    
+@include respond-to(xl) {
+
+  @include layout-variables(xl);
+
+  .row {
+    padding-left: $rg;
+    padding-right: $rg;
+  }
+
+  .container {
+    padding-left: percentage($cog / $rcw);
+    padding-right: percentage($cdg / $rcw);
+
+    .row-bleed & {
+      padding-left: $cog;
+      padding-right: $cdg;
+    }
+  }
+
+
+  @if ($nav == true) {
+
+    @if ($nw == 0) {
+      .show-nav .navigation-wrap {
+        display: none; // <-- just hide it?
+
+        @if ($show-nav-nojs == true) {
+          .no-js & {
+            display: block;
+            float: none;
+            width: auto;
+          }
+        }
+      }
+
+      .show-nav .container-wrap {
+        float: none;
+        width: auto;
+      }
+
+    } @else {
+
+      .show-nav .navigation-wrap {
+        display: block;
+        width: percentage($nw / $rcw);
+      }
+
+      .show-nav .row-bleed .navigation-wrap {
+        width: $nw;
+      }
+
+      .show-nav .container-wrap {
+        float: $wrapfloat;
+        width: percentage($nrcw / $rcw);
+
+        .container {
+          padding-left: percentage($cog / $nrcw);
+          padding-right: percentage($cdg / $nrcw);      
+        }
+
+      }
+
+      .show-nav .row-bleed .container-wrap {
+        width: $nrbcw;
+
+        .container {
+          padding-left: percentage($cog / $nrbcw);
+          padding-right: percentage($cdg / $nrbcw);      
+        }
+
+      }
+
+    }
+
+  }
+
+
+  .block {
+    @include context(rc) { margin-right: percentage($cig / $rciw); }
+    @include context(rbc) { margin-right: percentage($cig / $rbciw); }
+    @include context(nrc) { margin-right: percentage($cig / $nrciw); }
+    @include context(nrbc) { margin-right: percentage($cig / $nrbciw); }
+    @include context(cb) { margin-right: 0 !important; }
+  }
+
+
+  .c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+
+  .sm-c8 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c8 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c8 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c8 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c8 / $nrbciw); }
+    @include context(cb) { width: ((100% / 3) * 2) !important; }
+  }
+
+  .sm-c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+  .sm-c4 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c4 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c4 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c4 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c4 / $nrbciw); }
+    @include context(cb) { width: (100% / 3) !important; }
+  }
+
+  .sm-c3 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c3 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c3 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c3 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c3 / $nrbciw); }
+    @include context(cb) { width: 25% !important; }
+  }
+
+
+  .md-c10 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c10 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c10 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c10 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c10 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 10) !important; }
+  }
+
+  .md-c9 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c9 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c9 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c9 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c9 / $nrbciw); }
+    @include context(cb) { width: 75% !important; }
+  }
+
+  .md-c8 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c8 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c8 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c8 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c8 / $nrbciw); }
+    @include context(cb) { width: ((100% / 3) * 2) !important; }
+  }
+
+  .md-c7 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c7 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c7 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c7 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c7 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 7) !important; }
+  }
+
+  .md-c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+  .md-c5 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c5 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c5 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c5 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c5 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 5) !important; }
+  }
+
+  .md-c4 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c4 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c4 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c4 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c4 / $nrbciw); }
+    @include context(cb) { width: (100% / 3) !important; }
+  }
+
+  .md-c3 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c3 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c3 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c3 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c3 / $nrbciw); }
+    @include context(cb) { width: 25% !important; }
+  }
+
+
+
+  .lg-c10 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c10 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c10 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c10 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c10 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 10) !important; }
+  }
+
+  .lg-c9 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c9 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c9 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c9 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c9 / $nrbciw); }
+    @include context(cb) { width: 75% !important; }
+  }
+
+  .lg-c8 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c8 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c8 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c8 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c8 / $nrbciw); }
+    @include context(cb) { width: ((100% / 3) * 2) !important; }
+  }
+
+  .lg-c7 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c7 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c7 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c7 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c7 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 7) !important; }
+  }
+
+  .lg-c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+  .lg-c5 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c5 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c5 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c5 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c5 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 5) !important; }
+  }
+
+  .lg-c4 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c4 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c4 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c4 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c4 / $nrbciw); }
+    @include context(cb) { width: (100% / 3) !important; }
+  }
+
+  .lg-c3 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c3 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c3 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c3 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c3 / $nrbciw); }
+    @include context(cb) { width: 25% !important; }
+  }
+
+
+
+
+  .xl-c10 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c10 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c10 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c10 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c10 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 10) !important; }
+  }
+
+  .xl-c9 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c9 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c9 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c9 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c9 / $nrbciw); }
+    @include context(cb) { width: 75% !important; }
+  }
+
+  .xl-c8 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c8 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c8 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c8 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c8 / $nrbciw); }
+    @include context(cb) { width: ((100% / 3) * 2) !important; }
+  }
+
+  .xl-c7 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c7 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c7 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c7 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c7 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 7) !important; }
+  }
+
+  .xl-c6 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c6 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c6 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c6 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c6 / $nrbciw); }
+    @include context(cb) { width: 50% !important; }
+  }
+
+  .xl-c5 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c5 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c5 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c5 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c5 / $nrbciw); }
+    @include context(cb) { width: ((100% / 12) * 5) !important; }
+  }
+
+  .xl-c4 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c4 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c4 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c4 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c4 / $nrbciw); }
+    @include context(cb) { width: (100% / 3) !important; }
+  }
+
+  .xl-c3 {
+    float: left;
+    @include context(rc) { width: percentage($rc-c3 / $rciw); }
+    @include context(rbc) { width: percentage($rbc-c3 / $rbciw); }
+    @include context(nrc) { width: percentage($nrc-c3 / $nrciw); }
+    @include context(nrbc) { width: percentage($nrbc-c3 / $nrbciw); }
+    @include context(cb) { width: 25% !important; }
+  }
+
+
+
+  .xl-c10,
+  .xl-c9,
+  .xl-c8,
+  .xl-c7,
+  .xl-c6,
+  .xl-c5,
+  .xl-c4,
+  .xl-c3 {
+    float: left;
+    &.xl-switch {
+      float: right;
+    }
+  }
+
+
+
+  // inset
+  @if ($inset == true) {
+
+    // at small (SM), inset is still inside a clean (full width) block (c10 only comes in at md, lg or xl)
+    // and can be a c6 or a c4
+    .inset {
+
+
+      &.c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+
+      &.sm-c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+      &.sm-c4 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c4 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c4 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c4 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c4 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: (100% / 3) !important; }
+      }
+
+      &.md-c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+      &.md-c4 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c4 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c4 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c4 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c4 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: (100% / 3) !important; }
+      }
+
+      &.lg-c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+      &.lg-c4 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c4 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c4 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c4 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c4 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: (100% / 3) !important; }
+      }
+
+      &.xl-c6 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c6 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c6 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c6 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c6 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: 50% !important; }
+      }
+
+      &.xl-c4 {
+        float: right;
+        @include context(rc) { width: percentage($rc-c4 / ($rciw - $cig)); margin-left: percentage($cig / ($rciw - $cig)); }
+        @include context(rbc) { width: percentage($rbc-c4 / ($rbciw - $cig)); margin-left: percentage($cig / ($rbciw - $cig)); }
+        @include context(nrc) { width: percentage($nrc-c4 / ($nrciw - $cig)); margin-left: percentage($cig / ($nrciw - $cig)); }
+        @include context(nrbc) { width: percentage($nrbc-c4 / ($nrbciw - $cig)); margin-left: percentage($cig / ($nrbciw - $cig)); }
+        @include context(cb) { width: (100% / 3) !important; }
+      }
+
+    }
+
+
+    .md-c10 {
+      @include context(rc) { 
+        .inset {
+          margin-right: (0 - percentage(($rc-c2 + $cig) / $rc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: percentage($rc-c6 / $rc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: percentage($rc-c4 / $rc-c10);
+          }
+
+        }
+
+        &.md-offset-c1 .inset,
+        &.lg-offset-c1 .inset,
+        &.xl-offset-c1 .inset {
+          margin-right: (0 - percentage(($rc-c1 + $cig) / $rc-c10));
+        }
+      }
+
+      @include context(rbc) { 
+        .inset {
+          margin-right: (0 - percentage(($rbc-c2 + $cig) / $rbc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: percentage($rbc-c6 / $rbc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: percentage($rbc-c4 / $rbc-c10);
+          }
+
+        }
+
+        &.md-offset-c1 .inset,
+        &.lg-offset-c1 .inset,
+        &.xl-offset-c1 .inset {
+          margin-right: (0 - percentage(($rbc-c1 + $cig) / $rbc-c10));
+        }
+      }
+
+      @include context(nrc) { 
+        .inset {
+          margin-right: (0 - percentage(($nrc-c2 + $cig) / $nrc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: percentage($nrc-c6 / $nrc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: percentage($nrc-c4 / $nrc-c10);
+          }
+
+        }
+
+        &.md-offset-c1 .inset,
+        &.lg-offset-c1 .inset,
+        &.xl-offset-c1 .inset {
+          margin-right: (0 - percentage(($nrc-c1 + $cig) / $nrc-c10));
+        }
+      }
+      
+      @include context(nrbc) { 
+        .inset {
+          margin-right: (0 - percentage(($nrbc-c2 + $cig) / $nrbc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: percentage($nrbc-c6 / $nrbc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: percentage($nrbc-c4 / $nrbc-c10);
+          }
+
+        }
+
+        &.md-offset-c1 .inset,
+        &.lg-offset-c1 .inset,
+        &.xl-offset-c1 .inset {
+          margin-right: (0 - percentage(($nrbc-c1 + $cig) / $nrbc-c10));
+        }
+      }
+
+      @include context(cb) { 
+        .inset {
+          margin-right: -20% !important;
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6 {
+            width: 60% !important;
+          }
+
+          &.sm-c4,
+          &.md-c4 {
+            width: 40% !important;
+          }
+
+        }
+
+        &.md-offset-c1 .inset,
+        &.lg-offset-c1 .inset,
+        &.xl-offset-c1 .inset {
+          margin-right: -10% !important;
+        }
+      }
+    }
+
+    .lg-c10 {
+      @include context(rc) { 
+        .inset {
+          margin-right: (0 - percentage(($rc-c2 + $cig) / $rc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6 {
+            width: percentage($rc-c6 / $rc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4 {
+            width: percentage($rc-c4 / $rc-c10);
+          }
+
+        }
+
+        &.lg-offset-c1 .inset,
+        &.xl-offset-c1 .inset {
+          margin-right: (0 - percentage(($rc-c1 + $cig) / $rc-c10));
+        }
+      }
+
+      @include context(rbc) { 
+        .inset {
+          margin-right: (0 - percentage(($rbc-c2 + $cig) / $rbc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6 {
+            width: percentage($rbc-c6 / $rbc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4 {
+            width: percentage($rbc-c4 / $rbc-c10);
+          }
+
+        }
+
+        &.lg-offset-c1 .inset,
+        &.xl-offset-c1 .inset {
+          margin-right: (0 - percentage(($rbc-c1 + $cig) / $rbc-c10));
+        }
+      }
+
+      @include context(nrc) { 
+        .inset {
+          margin-right: (0 - percentage(($nrc-c2 + $cig) / $nrc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6 {
+            width: percentage($nrc-c6 / $nrc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4 {
+            width: percentage($nrc-c4 / $nrc-c10);
+          }
+
+        }
+
+        &.lg-offset-c1 .inset,
+        &.xl-offset-c1 .inset {
+          margin-right: (0 - percentage(($nrc-c1 + $cig) / $nrc-c10));
+        }
+      }
+      
+      @include context(nrbc) { 
+        .inset {
+          margin-right: (0 - percentage(($nrbc-c2 + $cig) / $nrbc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6 {
+            width: percentage($nrbc-c6 / $nrbc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4 {
+            width: percentage($nrbc-c4 / $nrbc-c10);
+          }
+
+        }
+
+        &.lg-offset-c1 .inset,
+        &.xl-offset-c1 .inset {
+          margin-right: (0 - percentage(($nrbc-c1 + $cig) / $nrbc-c10));
+        }
+      }
+
+      @include context(cb) { 
+        .inset {
+          margin-right: -20% !important;
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6 {
+            width: 60% !important;
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4 {
+            width: 40% !important;
+          }
+
+        }
+
+        &.lg-offset-c1 .inset,
+        &.xl-offset-c1 .inset {
+          margin-right: -10% !important;
+        }
+      }
+    }
+
+    .xl-c10 {
+      @include context(rc) { 
+        .inset {
+          margin-right: (0 - percentage(($rc-c2 + $cig) / $rc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6,
+          &.xl-c6 {
+            width: percentage($rc-c6 / $rc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4,
+          &.xl-c4 {
+            width: percentage($rc-c4 / $rc-c10);
+          }
+
+        }
+
+        &.xl-offset-c1 .inset {
+          margin-right: (0 - percentage(($rc-c1 + $cig) / $rc-c10));
+        }
+      }
+
+      @include context(rbc) { 
+        .inset {
+          margin-right: (0 - percentage(($rbc-c2 + $cig) / $rbc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6,
+          &.xl-c6 {
+            width: percentage($rbc-c6 / $rbc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4,
+          &.xl-c4 {
+            width: percentage($rbc-c4 / $rbc-c10);
+          }
+
+        }
+
+        &.xl-offset-c1 .inset {
+          margin-right: (0 - percentage(($rbc-c1 + $cig) / $rbc-c10));
+        }
+      }
+
+      @include context(nrc) { 
+        .inset {
+          margin-right: (0 - percentage(($nrc-c2 + $cig) / $nrc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6,
+          &.xl-c6 {
+            width: percentage($nrc-c6 / $nrc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4,
+          &.xl-c4 {
+            width: percentage($nrc-c4 / $nrc-c10);
+          }
+
+        }
+
+        &.xl-offset-c1 .inset {
+          margin-right: (0 - percentage(($nrc-c1 + $cig) / $nrc-c10));
+        }
+      }
+      
+      @include context(nrbc) { 
+        .inset {
+          margin-right: (0 - percentage(($nrbc-c2 + $cig) / $nrbc-c10));
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6,
+          &.xl-c6 {
+            width: percentage($nrbc-c6 / $nrbc-c10);
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4,
+          &.xl-c4 {
+            width: percentage($nrbc-c4 / $nrbc-c10);
+          }
+
+        }
+
+        &.xl-offset-c1 .inset {
+          margin-right: (0 - percentage(($nrbc-c1 + $cig) / $nrbc-c10));
+        }
+      }
+
+      @include context(cb) { 
+        .inset {
+          margin-right: -20% !important;
+
+          &.c6,
+          &.sm-c6,
+          &.md-c6,
+          &.lg-c6,
+          &.xl-c6 {
+            width: 60% !important;
+          }
+
+          &.sm-c4,
+          &.md-c4,
+          &.lg-c4,
+          &.xl-c4 {
+            width: 40% !important;
+          }
+
+        }
+
+        &.xl-offset-c1 .inset {
+          margin-right: -10% !important;
+        }
+      }
+    }
+
+  }
+
+
+
+
+  @if ($offset == true) {
+
+    .sm-offset-c2 {
+      @include context(rc) { margin-left: percentage(($rc-c2 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c2 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c2 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c2 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: ((100% / 12) * 2) !important; }
+    }
+
+    .offset-c3,
+    .sm-offset-c3 {
+      @include context(rc) { margin-left: percentage(($rc-c3 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c3 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c3 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c3 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: 25% !important; }
+    }
+
+    .sm-offset-c4 {
+      @include context(rc) { margin-left: percentage(($rc-c4 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c4 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c4 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c4 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 3) !important; }
+    }
+
+    .md-offset-c1 {
+      @include context(rc) { margin-left: percentage(($rc-c1 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c1 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c1 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c1 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 12) !important; }
+    }
+
+    .md-offset-c2 {
+      @include context(rc) { margin-left: percentage(($rc-c2 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c2 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c2 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c2 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: ((100% / 12) * 2) !important; }
+    }
+
+    .md-offset-c3 {
+      @include context(rc) { margin-left: percentage(($rc-c3 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c3 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c3 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c3 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: 25% !important; }
+    }
+
+    .md-offset-c4 {
+      @include context(rc) { margin-left: percentage(($rc-c4 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c4 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c4 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c4 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 3) !important; }
+    }
+
+    .lg-offset-c1 {
+      @include context(rc) { margin-left: percentage(($rc-c1 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c1 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c1 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c1 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 12) !important; }
+    }
+
+    .lg-offset-c2 {
+      @include context(rc) { margin-left: percentage(($rc-c2 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c2 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c2 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c2 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: ((100% / 12) * 2) !important; }
+    }
+
+    .lg-offset-c3 {
+      @include context(rc) { margin-left: percentage(($rc-c3 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c3 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c3 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c3 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: 25% !important; }
+    }
+
+    .lg-offset-c4 {
+      @include context(rc) { margin-left: percentage(($rc-c4 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c4 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c4 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c4 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 3) !important; }
+    }
+
+    .xl-offset-c1 {
+      @include context(rc) { margin-left: percentage(($rc-c1 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c1 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c1 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c1 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 12) !important; }
+    }
+
+    .xl-offset-c2 {
+      @include context(rc) { margin-left: percentage(($rc-c2 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c2 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c2 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c2 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: ((100% / 12) * 2) !important; }
+    }
+
+    .xl-offset-c3 {
+      @include context(rc) { margin-left: percentage(($rc-c3 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c3 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c3 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c3 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: 25% !important; }
+    }
+
+    .xl-offset-c4 {
+      @include context(rc) { margin-left: percentage(($rc-c4 + $cig) / $rciw); }
+      @include context(rbc) { margin-left: percentage(($rbc-c4 + $cig) / $rbciw); }
+      @include context(nrc) { margin-left: percentage(($nrc-c4 + $cig) / $nrciw); }
+      @include context(nrbc) { margin-left: percentage(($nrbc-c4 + $cig) / $nrbciw); }
+      @include context(cb) { margin-left: (100% / 3) !important; }
+    }
+
+  }
+
+
+}
+
+//@include respond-to(xl-hd) {
+//}
+
+
+
+
+                                                   
+// 88b           d88         db         8b        d8  
+// 888b         d888        d88b         Y8,    ,8P   
+// 88`8b       d8'88       d8'`8b         `8b  d8'    
+// 88 `8b     d8' 88      d8'  `8b          Y88P      
+// 88  `8b   d8'  88     d8YaaaaY8b         d88b      
+// 88   `8b d8'   88    d8""""""""8b      ,8P  Y8,    
+// 88    `888'    88   d8'        `8b    d8'    `8b   
+// 88     `8'     88  d8'          `8b  8P        Y8  
+                                                   
+@include respond-to(max) {
+
+  #page-wrap {
+    margin-left: auto;
+    margin-right: auto;
+    width: $row-max !important;
+  }
+
+}
+
+
+
+
+                                                                        
+                                                                         
+// 8b        d8  88                                        88               
+//  Y8,    ,8P   88                                        88               
+//   `8b  d8'    88                                        88               
+//     Y88P      88               ,adPPYba,   8b,dPPYba,   88  8b       d8  
+//     d88b      88              a8"     "8a  88P'   `"8a  88  `8b     d8'  
+//   ,8P  Y8,    88              8b       d8  88       88  88   `8b   d8'   
+//  d8'    `8b   88              "8a,   ,a8"  88       88  88    `8b,d8'    
+// 8P        Y8  88888888888      `"YbbdP"'   88       88  88      Y88'     
+//                                                                 d8'      
+//                                                                d8'       
+
+@include respond-to(xl-only) {
+
+  .clear-xl {
+    clear: left;
+  }
+
+}
+
+//@include respond-to(xl-only-hd) {
+//}
+
+
+
+                                                                                                                                                 
+// 88           ,ad8888ba,                                88               
+// 88          d8"'    `"8b                               88               
+// 88         d8'                                         88               
+// 88         88                 ,adPPYba,   8b,dPPYba,   88  8b       d8  
+// 88         88      88888     a8"     "8a  88P'   `"8a  88  `8b     d8'  
+// 88         Y8,        88     8b       d8  88       88  88   `8b   d8'   
+// 88          Y8a.    .a88     "8a,   ,a8"  88       88  88    `8b,d8'    
+// 88888888888  `"Y88888P"       `"YbbdP"'   88       88  88      Y88'     
+//                                                                d8'      
+//                                                               d8'       
+
+@include respond-to(lg-only) {
+
+  .clear-lg {
+    clear: left;
+  }
+
+}
+
+//@include respond-to(lg-only-hd) {
+//}
+
+
+
+
+                                                                                                                                                         
+// 88b           d88  88888888ba,                                 88               
+// 888b         d888  88      `"8b                                88               
+// 88`8b       d8'88  88        `8b                               88               
+// 88 `8b     d8' 88  88         88      ,adPPYba,   8b,dPPYba,   88  8b       d8  
+// 88  `8b   d8'  88  88         88     a8"     "8a  88P'   `"8a  88  `8b     d8'  
+// 88   `8b d8'   88  88         8P     8b       d8  88       88  88   `8b   d8'   
+// 88    `888'    88  88      .a8P      "8a,   ,a8"  88       88  88    `8b,d8'    
+// 88     `8'     88  88888888Y"'        `"YbbdP"'   88       88  88      Y88'     
+//                                                                        d8'      
+//                                                                       d8'       
+
+@include respond-to(md-only) {
+
+  .clear-md {
+    clear: left;
+  }
+
+}
+
+//@include respond-to(md-only-hd) {
+//}
+
+
+
+
+                                                                                                                                                       
+//  ad88888ba   88b           d88                               88               
+// d8"     "8b  888b         d888                               88               
+// Y8,          88`8b       d8'88                               88               
+// `Y8aaaaa,    88 `8b     d8' 88      ,adPPYba,   8b,dPPYba,   88  8b       d8  
+//   `"""""8b,  88  `8b   d8'  88     a8"     "8a  88P'   `"8a  88  `8b     d8'  
+//         `8b  88   `8b d8'   88     8b       d8  88       88  88   `8b   d8'   
+// Y8a     a8P  88    `888'    88     "8a,   ,a8"  88       88  88    `8b,d8'    
+//  "Y88888P"   88     `8'     88      `"YbbdP"'   88       88  88      Y88'     
+//                                                                      d8'      
+//                                                                     d8'       
+
+@include respond-to(sm-only) {
+
+  .clear-sm {
+    clear: left;
+  }
+
+}
+
+//@include respond-to(sm-only-hd) {
+//}
+
+
+
+
+                                                                        
+// 8b        d8  ad88888ba                                88               
+//  Y8,    ,8P  d8"     "8b                               88               
+//   `8b  d8'   Y8,                                       88               
+//     Y88P     `Y8aaaaa,        ,adPPYba,   8b,dPPYba,   88  8b       d8  
+//     d88b       `"""""8b,     a8"     "8a  88P'   `"8a  88  `8b     d8'  
+//   ,8P  Y8,           `8b     8b       d8  88       88  88   `8b   d8'   
+//  d8'    `8b  Y8a     a8P     "8a,   ,a8"  88       88  88    `8b,d8'    
+// 8P        Y8  "Y88888P"       `"YbbdP"'   88       88  88      Y88'     
+//                                                                d8'      
+//                                                               d8'       
+
+@include respond-to(xs-only) {
+    .clear-xs {
+        clear: left;
+      }
+}
+
+//@include respond-to(xs-only-hd) {
+//}
+
+
+
+
+
+// 88888888ba               88
+// 88      "8b              ""                ,d
+// 88      ,8P                                88
+// 88aaaaaa8P'  8b,dPPYba,  88  8b,dPPYba,  MM88MMM
+// 88""""""'    88P'   "Y8  88  88P'   `"8a   88
+// 88           88          88  88       88   88
+// 88           88          88  88       88   88,
+// 88           88          88  88       88   "Y888
+
+//@include respond-to(print) {
+//}

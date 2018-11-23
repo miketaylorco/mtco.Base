@@ -1,0 +1,207 @@
+[
+    {
+        "id": "style_layout_structure",
+        "name": "Structure (full width)",
+        "showSiteNav": true,
+        "url": "/_style/layout-structure.html",
+        "parent": "style_layout"
+    },
+    {
+        "id": "style_layout_structure_nav",
+        "name": "Structure (with left navigation)",
+        "showSiteNav": true,
+        "url": "/_style/layout-structure-nav.html",
+        "parent": "style_layout"
+    },
+    {
+        "id": "style_layout_xs",
+        "name": "XS+ layout options",
+        "url": "/_style/layout-xs.html",
+        "parent": "style_layout"
+    },
+    {
+        "id": "style_layout_sm",
+        "name": "SM+ layout options",
+        "url": "/_style/layout-sm.html",
+        "parent": "style_layout"
+    },
+    {
+        "id": "style_layout_md",
+        "name": "MD+ layout options",
+        "url": "/_style/layout-md.html",
+        "parent": "style_layout"
+    },
+    {
+        "id": "style_layout_chain",
+        "name": "Responsive behaviour chaining",
+        "url": "/_style/layout-chain.html",
+        "parent": "style_layout"
+    },
+    {
+        "id": "style_layout",
+        "name": "Core framework",
+        "parent": "style",
+        "children": [
+            "style_layout_structure",
+            "style_layout_structure_nav",
+            "style_layout_xs",
+            "style_layout_sm",
+            "style_layout_md",
+            "style_layout_chain"
+        ]
+    },
+    {
+        "id": "style_typography_1",
+        "name": "First typography item",
+        "url": "xxx",
+        "parent": "style_typography"
+    },
+    {
+        "id": "style_typography_2",
+        "name": "Second typography item",
+        "url": "xxx",
+        "parent": "style_typography"
+    },
+    {
+        "id": "style_typography_3",
+        "name": "Third typography item",
+        "url": "xxx",
+        "parent": "style_typography"
+    },
+    {
+        "id": "style_typography",
+        "name": "Typography",
+        "parent": "style",
+        "children": [
+            "style_typography_1",
+            "style_typography_2",
+            "style_typography_3"
+        ]
+    },
+    {
+        "id": "style_layout_1",
+        "name": "First layout item",
+        "url": "xxx",
+        "parent": "style_layout"
+    },
+    {
+        "id": "style_layout_2",
+        "name": "Second layout item",
+        "url": "xxx",
+        "parent": "style_layout"
+    },
+    {
+        "id": "style_layout_3",
+        "name": "Third layout item",
+        "url": "xxx",
+        "parent": "style_layout"
+    },
+    {
+        "id": "style_layout",
+        "name": "Layout and flow",
+        "parent": "style",
+        "children": [
+            "style_layout_1",
+            "style_layout_2",
+            "style_layout_3"
+        ]
+    },
+    {
+        "id": "style_navigation_1",
+        "name": "First navigation item",
+        "url": "xxx",
+        "parent": "style_nav"
+    },
+    {
+        "id": "style_navigation_2",
+        "name": "Second navigation item",
+        "url": "xxx",
+        "parent": "style_nav"
+    },
+    {
+        "id": "style_navigation_3",
+        "name": "Third navigation item",
+        "url": "xxx",
+        "parent": "style_nav"
+    },
+    {
+        "id": "style_nav",
+        "name": "Navigation devices",
+        "parent": "style",
+        "children": [
+            "style_navigation_1",
+            "style_navigation_2",
+            "style_navigation_3"
+        ]
+    },
+    {
+        "id": "style_content_1",
+        "name": "First content item",
+        "url": "xxx",
+        "parent": "style_content"
+    },
+    {
+        "id": "style_content_2",
+        "name": "Second content item",
+        "url": "xxx",
+        "parent": "style_content"
+    },
+    {
+        "id": "style_content_3",
+        "name": "Third content item",
+        "url": "xxx",
+        "parent": "style_content"
+    },
+    {
+        "id": "style_content",
+        "name": "Content devices",
+        "parent": "style",
+        "children": [
+            "style_content_1",
+            "style_content_2",
+            "style_content_3"
+        ]
+    },
+    {
+        "id": "style_interactive_1",
+        "name": "First interactive item",
+        "url": "xxx",
+        "parent": "style_interactive"
+    },
+    {
+        "id": "style_interactive_2",
+        "name": "Second interactive item",
+        "url": "xxx",
+        "parent": "style_interactive"
+    },
+    {
+        "id": "style_interactive_3",
+        "name": "Third interactive item",
+        "url": "xxx",
+        "parent": "style_interactive"
+    },
+    {
+        "id": "style_interactive",
+        "name": "Interactive devices",
+        "parent": "style",
+        "children": [
+            "style_interactive_1",
+            "style_interactive_2",
+            "style_interactive_3"
+        ]
+    },
+    {
+        "id": "style",
+        "name": "Style guide",
+        "url": "/_style/index.html",
+        "parent": "rootNav",
+        "children": [
+            "style_layout",
+            "style_typography",
+            "style_layout",
+            "style_nav",
+            "style_content",
+            "style_interactive"
+        ]
+    }
+]

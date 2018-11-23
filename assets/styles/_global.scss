@@ -1,0 +1,81 @@
+// --- colour palette ---
+
+$text: #444;
+$headings: $text;
+$standfirst: $text;
+
+
+
+
+
+@mixin visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+
+  &.focusable:active,
+  &.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+  }
+}
+
+@mixin visuallyrevealed {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+
+
+@mixin clearfix {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+
+// eg bg-opacity()
+@mixin bg-opacity($r, $g, $b, $transDecimal, $ieFilter, $fallback) {
+
+  background-color: $fallback;
+  background-color: rgba($r, $g, $b, $transDecimal);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ieFilter}', endColorstr='#{$ieFilter}');
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$ieFilter}', endColorstr='#{$ieFilter}')";
+
+  .lt-ie10 & {
+    background-color: transparent;
+  }
+
+  .ie9 & {
+    filter: none;
+    -ms-filter: none;
+  }
+
+  /*
+  .lt-ie8 & {
+    background-color: $fallback;
+  }
+  */
+
+}

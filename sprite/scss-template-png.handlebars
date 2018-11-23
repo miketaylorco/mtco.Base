@@ -1,0 +1,23 @@
+{{#block "sprites"}}
+{{#each sprites}}
+${{sheetName}}-{{name}}-name: '{{sheetName}}-{{name}}';
+${{sheetName}}-{{name}}-offset-x: {{px.offset_x}};
+${{sheetName}}-{{name}}-offset-y: {{px.offset_y}};
+${{sheetName}}-{{name}}-width: {{px.width}};
+${{sheetName}}-{{name}}-height: {{px.height}};
+${{sheetName}}-{{name}}-total-width: {{px.total_width}};
+${{sheetName}}-{{name}}-total-height: {{px.total_height}};
+${{sheetName}}-{{name}}-image: '{{{escaped_image}}}?v=1';
+${{sheetName}}-{{name}}: {{px.offset_x}} {{px.offset_y}} {{px.width}} {{px.height}} {{px.total_width}} {{px.total_height}} {{padding}}px '{{sheetName}}-{{name}}' '{{{escaped_image}}}?v=1' '' '' false;
+{{/each}}
+{{/block}}
+
+{{#block "spritesheet"}}
+${{spritesheet.name}}-width: {{spritesheet.px.width}};
+${{spritesheet.name}}-height: {{spritesheet.px.height}};
+${{spritesheet.name}}-image: '{{{spritesheet.escaped_image}}}?v=1';
+${{spritesheet.name}}-sprites:{{#sprites}} ${{sheetName}}-{{name}}{{/sprites}};
+${{spritesheet.name}}: {{spritesheet.px.width}} {{spritesheet.px.height}} '{{{spritesheet.escaped_image}}}?v=1' ${{spritesheet.name}}-sprites;
+
+@include sprites(${{spritesheet.name}}-sprites);
+{{/block}}

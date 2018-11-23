@@ -1,0 +1,16 @@
+{
+    "titleSuffix": "Site Name Goes Here",
+    "debug": true,
+    "showStyleGuide": true,
+    "mq": {
+        "sm": "(min-width: 520px)",
+        "md": "(min-width: 760px)",
+        "lg": "(min-width: 984px)",
+        "xl": "(min-width: 1200px)",
+        "hd" : "(-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 192dpi)",
+        "sm_hd": "(min-width: 520px) and (-webkit-min-device-pixel-ratio: 1.3), (min-width: 520px) and (min-device-pixel-ratio: 1.3), (min-width: 520px) and (min-resolution: 192dpi)",
+        "md_hd": "(min-width: 760px) and (-webkit-min-device-pixel-ratio: 1.3), (min-width: 760px) and (min-device-pixel-ratio: 1.3), (min-width: 760px) and (min-resolution: 192dpi)",
+        "lg_hd": "(min-width: 984px) and (-webkit-min-device-pixel-ratio: 1.3), (min-width: 984px) and (min-device-pixel-ratio: 1.3), (min-width: 984px) and (min-resolution: 192dpi)",
+        "xl_hd": "(min-width: 1200px) and (-webkit-min-device-pixel-ratio: 1.3), (min-width: 1200px) and (min-device-pixel-ratio: 1.3), (min-width: 1200px) and (min-resolution: 192dpi)"
+    }
+}
