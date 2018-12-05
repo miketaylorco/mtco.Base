@@ -1,4 +1,4 @@
-//Version 2.0.2
+//Version 2.1.0
 
 //88b           d88                        88               88                         
 //888b         d888                        88               88                         
@@ -142,7 +142,7 @@ gulp.task('scripts', function() {
     	//Find "var navJSON={};" and replace with navigation
     	if(paths.src.navJSONAppend == path.basename(file.path)) {
     		var output = file.contents.toString().replace(/var navJSON={};/, 'var navJSON='+JSON.stringify(navigation)+';');
-    		file.contents = new Buffer(output);
+    		file.contents = Buffer.from(output);
     	}
 	}))
 	.pipe(rename({suffix: '.min'}))
@@ -876,7 +876,7 @@ function getFolders(dir) {
 function addXMLDeclaration(file) {
 	if(file.contents.toString().indexOf('<?xml') == -1) {
 		return file.contents = Buffer.concat([
-			new Buffer('<?xml version="1.0"?>'),
+			Buffer.from('<?xml version="1.0"?>'),
 			file.contents
 		]);
 	}

@@ -6,39 +6,39 @@ var addStyleguide = true;
 
 var paths = {
     src: {
-        styles: 'assets/styles',
-        scripts: 'assets/scripts',
-		scriptsHead: 'assets/scripts/_head',
-		scriptsBody: 'assets/scripts/_body',
-        templates: 'templates',
-        files: 'assets/files',
-		images: 'assets/images',
-        videos: 'assets/videos',
-        globalJSON: 'settings/global.json',
-        navJSONAppend: 'common.js',
-        navJSON: 'settings/nav.json',
-        navDebugJSON: 'settings/debug/nav.debug.json',
-        navFlatDebugJSON: 'settings/debug/navFlat.debug.json',
+        styles: 			'assets/styles',
+        scripts: 			'assets/scripts',
+		scriptsHead: 		'assets/scripts/_head',
+		scriptsBody: 		'assets/scripts/_body',
+        templates: 			'templates',
+        files: 				'assets/files',
+		images: 			'assets/images',
+        videos: 			'assets/videos',
+        globalJSON: 		'settings/global.json',
+        navJSONAppend: 		'common.js',
+        navJSON: 			'settings/nav.json',
+        navDebugJSON: 		'settings/debug/nav.debug.json',
+        navFlatDebugJSON: 	'settings/debug/navFlat.debug.json',
         
-        stylenavJSON: 'settings/stylenav.json',
-    	stylenavDebugJSON: 'settings/debug/stylenav.debug.json',
-    	styleFolder:'templates/_style',
+        stylenavJSON: 		'settings/stylenav.json',
+    	stylenavDebugJSON: 	'settings/debug/stylenav.debug.json',
+    	styleFolder:		'templates/_style',
 		
-		sprite: 'sprite',
-		spriteImages: 'assets/images/sprites',
-		spriteStyles: 'assets/styles/sprites'
+		sprite: 			'sprite',
+		spriteImages: 		'assets/images/sprites',
+		spriteStyles: 		'assets/styles/sprites'
     },
     dist: {
-        styles: 'build/assets/styles',
-        scripts: 'build/assets/scripts',
-        headScript: 'head.min.js',
-        bodyScript: 'body.min.js',
-		files: 'build/assets/files',
-		images: 'build/assets/images',
-        videos: 'build/assets/videos',
-        build: 'build',
+        styles: 			'build/assets/styles',
+        scripts: 			'build/assets/scripts',
+        headScript: 		'head.min.js',
+        bodyScript: 		'body.min.js',
+		files: 				'build/assets/files',
+		images: 			'build/assets/images',
+        videos: 			'build/assets/videos',
+        build: 				'build',
 		
-		spriteImages: 'build/assets/images/sprites'
+		spriteImages: 		'build/assets/images/sprites'
     }
 };
 
@@ -54,6 +54,7 @@ var absoluteFiles = [
 	// 	dest: 'build/assets/test'
 	// }
 ];
+
 
 //Scripts to concatenate
 var headScripts = [
@@ -82,6 +83,8 @@ var assetPath = {
     videos: 'assets/videos/',
 	files: 'assets/files/'
 };
+
+
 
 //Server settings (BrowserSync)
 //http://www.browsersync.io/docs/options/
