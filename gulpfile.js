@@ -1045,7 +1045,7 @@ function deleteFile(filepath) {
 gulp.task('clean', function(done) {
 
     // if piping assets to CMS folders, check that folders actually exist on the filesystem
-    if(paths.pipeAssetsToCms.length > 0) {
+    if(doPipeAssetsToCms) {
         for (i = paths.pipeAssetsToCms.length - 1; i >= 0; --i) {
             if(paths.pipeAssetsToCms[i].folderMustExist) {
                 if(!directoryExists.sync(paths.pipeAssetsToCms[i].path)) {
