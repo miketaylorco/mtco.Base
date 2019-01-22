@@ -1,21 +1,165 @@
-@mixin sprite-width($sprite) {
-	width: nth($sprite, 5);
+//88888888888                                             88                                       
+//88                                               ,d     ""                                       
+//88                                               88                                              
+//88aaaaa  88       88  8b,dPPYba,    ,adPPYba,  MM88MMM  88   ,adPPYba,   8b,dPPYba,   ,adPPYba,  
+//88"""""  88       88  88P'   `"8a  a8"     ""    88     88  a8"     "8a  88P'   `"8a  I8[    ""  
+//88       88       88  88       88  8b            88     88  8b       d8  88       88   `"Y8ba,   
+//88       "8a,   ,a88  88       88  "8a,   ,aa    88,    88  "8a,   ,a8"  88       88  aa    ]8I  
+//88        `"YbbdP'Y8  88       88   `"Ybbd8"'    "Y888  88   `"YbbdP"'   88       88  `"YbbdP"'  
+
+@function spr-getX($s) {
+	@return  nth($s, 1);
+}
+@function spr-getY($s) {
+	@return  nth($s, 2);
+}
+@function spr-getWidth($s) {
+	@return  nth($s, 3);
+}
+@function spr-getHeight($s) {
+	@return  nth($s, 4);
+}
+@function spr-getTotalWidth($s) {
+	@return  nth($s, 5);
+}
+@function spr-getTotalHeight($s) {
+	@return  nth($s, 6);
+}
+@function spr-getPadding($s) {
+	@return  nth($s, 7);
+}
+@function spr-getName($s) {
+	@return  nth($s, 8);
+}
+@function spr-getImage($s) {
+	@return  nth($s, 9);
+}
+@function spr-getFallback($s) {
+	@return  nth($s, 10);
+}
+@function spr-getFallbackX2($s) {
+	@return  nth($s, 11);
+}
+@function spr-svgBG($s) {
+	@return  nth($s, 12);
 }
 
-@mixin sprite-height($sprite) {
-	height: nth($sprite, 6);
-}
 
-@mixin sprite-position($sprite) {
-	$sprite-offset-x: nth($sprite, 3);
-	$sprite-offset-y: nth($sprite, 4);
-	background-position: $sprite-offset-x  $sprite-offset-y;
-}
+//88888888ba                                                                          88                         
+//88      "8b                                                                  ,d     ""                         
+//88      ,8P                                                                  88                                
+//88aaaaaa8P'  8b,dPPYba,   ,adPPYba,   8b,dPPYba,    ,adPPYba,  8b,dPPYba,  MM88MMM  88   ,adPPYba,  ,adPPYba,  
+//88""""""'    88P'   "Y8  a8"     "8a  88P'    "8a  a8P_____88  88P'   "Y8    88     88  a8P_____88  I8[    ""  
+//88           88          8b       d8  88       d8  8PP"""""""  88            88     88  8PP"""""""   `"Y8ba,   
+//88           88          "8a,   ,a8"  88b,   ,a8"  "8b,   ,aa  88            88,    88  "8b,   ,aa  aa    ]8I  
+//88           88           `"YbbdP"'   88`YbbdP"'    `"Ybbd8"'  88            "Y888  88   `"Ybbd8"'  `"YbbdP"'  
+//                                      88                                                                       
+//                                      88                                                                       
 
 @mixin sprite-image($sprite) {
-	$sprite-image: nth($sprite, 9);
+	$sprite-image: spr-getImage($sprite);
 	background-image: url(#{$sprite-image});
 }
+
+//  888       888 d8b      888 888    888      
+//  888   o   888 Y8P      888 888    888      
+//  888  d8b  888          888 888    888      
+//  888 d888b 888 888  .d88888 888888 88888b.  
+//  888d88888b888 888 d88" 888 888    888 "88b 
+//  88888P Y88888 888 888  888 888    888  888 
+//  8888P   Y8888 888 Y88b 888 Y88b.  888  888 
+//  888P     Y888 888  "Y88888  "Y888 888  888 
+
+@mixin sprite-width($sprite) {
+	width: spr-getWidth($sprite);
+}
+@mixin sprite-width-x2($sprite) {
+	width: spr-getWidth($sprite)/2;
+}
+
+//  888    888          d8b          888      888    
+//  888    888          Y8P          888      888    
+//  888    888                       888      888    
+//  8888888888  .d88b.  888  .d88b.  88888b.  888888 
+//  888    888 d8P  Y8b 888 d88P"88b 888 "88b 888    
+//  888    888 88888888 888 888  888 888  888 888    
+//  888    888 Y8b.     888 Y88b 888 888  888 Y88b.  
+//  888    888  "Y8888  888  "Y88888 888  888  "Y888 
+//                               888                 
+//                          Y8b d88P                 
+//                           "Y88P"                  
+
+@mixin sprite-height($sprite) {
+	height: spr-getHeight($sprite);
+}
+@mixin sprite-height-x2($sprite) {
+	height: spr-getHeight($sprite)/2;
+}
+
+//  8888888b.                   d8b 888    d8b                   
+//  888   Y88b                  Y8P 888    Y8P                   
+//  888    888                      888                          
+//  888   d88P .d88b.  .d8888b  888 888888 888  .d88b.  88888b.  
+//  8888888P" d88""88b 88K      888 888    888 d88""88b 888 "88b 
+//  888       888  888 "Y8888b. 888 888    888 888  888 888  888 
+//  888       Y88..88P      X88 888 Y88b.  888 Y88..88P 888  888 
+//  888        "Y88P"   88888P' 888  "Y888 888  "Y88P"  888  888 
+
+@mixin sprite-position($sprite) {
+	$sprite-offset-x: spr-getX($sprite);
+	$sprite-offset-y: spr-getY($sprite);
+
+	//gulp-svg-sprite adds padding to the position
+	@if(spr-svgBG($sprite)) {
+		$sprite-offset-x: $sprite-offset-x - spr-getPadding($sprite);
+		$sprite-offset-y: $sprite-offset-y - spr-getPadding($sprite);
+	}
+	background-position: $sprite-offset-x  $sprite-offset-y;
+	background-size: spr-getTotalWidth($sprite) spr-getTotalHeight($sprite);
+}
+@mixin sprite-position-x2($sprite) {
+	$sprite-offset-x: spr-getX($sprite)/2;
+	$sprite-offset-y: spr-getY($sprite)/2;
+
+	//gulp-svg-sprite adds padding to the position
+	@if(spr-svgBG($sprite)) {
+		$sprite-offset-x: $sprite-offset-x - spr-getPadding($sprite);
+		$sprite-offset-y: $sprite-offset-y - spr-getPadding($sprite);
+	}
+	background-position: $sprite-offset-x  $sprite-offset-y;
+	background-size: spr-getTotalWidth($sprite)/2 spr-getTotalHeight($sprite)/2;
+}
+
+
+//  8888888888       888 888 888                        888      
+//  888              888 888 888                        888      
+//  888              888 888 888                        888      
+//  8888888  8888b.  888 888 88888b.   8888b.   .d8888b 888  888 
+//  888         "88b 888 888 888 "88b     "88b d88P"    888 .88P 
+//  888     .d888888 888 888 888  888 .d888888 888      888888K  
+//  888     888  888 888 888 888 d88P 888  888 Y88b.    888 "88b 
+//  888     "Y888888 888 888 88888P"  "Y888888  "Y8888P 888  888 
+
+@mixin sprite-image-fallback($sprite) {
+	$sprite-image-fb: spr-getFallback($sprite);
+	background-image: url(#{$sprite-image-fb});
+}
+@mixin sprite-image-fallback-x2($sprite) {
+	$sprite-image-fb-x2: spr-getFallbackX2($sprite);
+	background-image: url(#{$sprite-image-fb-x2});
+}
+
+
+//88        88              88                                                  
+//88        88              88                                                  
+//88        88              88                                                  
+//88aaaaaaaa88   ,adPPYba,  88  8b,dPPYba,    ,adPPYba,  8b,dPPYba,  ,adPPYba,  
+//88""""""""88  a8P_____88  88  88P'    "8a  a8P_____88  88P'   "Y8  I8[    ""  
+//88        88  8PP"""""""  88  88       d8  8PP"""""""  88           `"Y8ba,   
+//88        88  "8b,   ,aa  88  88b,   ,a8"  "8b,   ,aa  88          aa    ]8I  
+//88        88   `"Ybbd8"'  88  88`YbbdP"'    `"Ybbd8"'  88          `"YbbdP"'  
+//                              88                                              
+//                              88                                              
 
 @mixin sprite($sprite) {
 	@include sprite-image($sprite);
@@ -23,21 +167,134 @@
 	@include sprite-width($sprite);
 	@include sprite-height($sprite);
 }
+@mixin sprite-x2($sprite) {
+	@include sprite-image-fallback($sprite); 
+	@include sprite-position-x2($sprite);
+	@include sprite-width-x2($sprite);
+	@include sprite-height-x2($sprite);
+}
 
-/* PNG Sprite */
+//  8888888b.                                                       d8b                   
+//  888   Y88b                                                      Y8P                   
+//  888    888                                                                            
+//  888   d88P .d88b.  .d8888b  88888b.   .d88b.  88888b.  .d8888b  888 888  888  .d88b.  
+//  8888888P" d8P  Y8b 88K      888 "88b d88""88b 888 "88b 88K      888 888  888 d8P  Y8b 
+//  888 T88b  88888888 "Y8888b. 888  888 888  888 888  888 "Y8888b. 888 Y88  88P 88888888 
+//  888  T88b Y8b.          X88 888 d88P Y88..88P 888  888      X88 888  Y8bd8P  Y8b.     
+//  888   T88b "Y8888   88888P' 88888P"   "Y88P"  888  888  88888P' 888   Y88P    "Y8888  
+//                              888                                                       
+//                              888                                                       
+//                              888                                                       
+
+//PNG swap
+@mixin sprite-png-swap($old, $new) {
+	$sprite-old-name: spr-getName($old);
+
+	.#{$sprite-old-name} {
+		@include sprite($new);
+	}
+}
+
+//SVG inline dimensions swap
+@mixin sprite-svg-swap($old, $new) {
+	$sprite-old-name: spr-getName($old);
+
+	.#{$sprite-old-name} {
+		.no-js &, .no-svg & {
+			@include sprite($new);
+		}
+		.svg & {display: none;}
+	}
+
+	.#{$sprite-old-name}-dims {
+		@include sprite-width($new);
+		@include sprite-height($new);
+	}
+}
+
+//SVG background swap
+@mixin sprite-svg-bg-swap($old, $new) {
+	$sprite-old-name: spr-getName($old);
+
+	.#{$sprite-old-name} {
+		@include sprite-position($new);
+		@include sprite-width($new);
+		@include sprite-height($new);
+		.no-js &, .no-svg & {
+			@include sprite-image-fallback($new);
+		}
+		.svg & {
+			@include sprite-image($new);
+		}
+	}
+
+	.#{$sprite-old-name}-dims {
+		@include sprite-width($new);
+		@include sprite-height($new);
+	}
+}
+
+
+//  ,ad8888ba,                                                           
+// d8"'    `"8b                                        ,d                
+//d8'                                                  88                
+//88             8b,dPPYba,   ,adPPYba,  ,adPPYYba,  MM88MMM  ,adPPYba,  
+//88             88P'   "Y8  a8P_____88  ""     `Y8    88    a8P_____88  
+//Y8,            88          8PP"""""""  ,adPPPPP88    88    8PP"""""""  
+// Y8a.    .a8P  88          "8b,   ,aa  88,    ,88    88,   "8b,   ,aa  
+//  `"Y8888Y"'   88           `"Ybbd8"'  `"8bbdP"Y8    "Y888  `"Ybbd8"'
+
+//  8888888b.  888b    888  .d8888b.       888888b.    .d8888b.  
+//  888   Y88b 8888b   888 d88P  Y88b      888  "88b  d88P  Y88b 
+//  888    888 88888b  888 888    888      888  .88P  888    888 
+//  888   d88P 888Y88b 888 888             8888888K.  888        
+//  8888888P"  888 Y88b888 888  88888      888  "Y88b 888  88888 
+//  888        888  Y88888 888    888      888    888 888    888 
+//  888        888   Y8888 Y88b  d88P      888   d88P Y88b  d88P 
+//  888        888    Y888  "Y8888P88      8888888P"   "Y8888P88 
+
 @mixin sprites($sprites) {
 	@each $sprite in $sprites {
-		$sprite-name: nth($sprite, 10);
+		$sprite-name: spr-getName($sprite);
+
 		.#{$sprite-name} {
 			@include sprite($sprite);
 		}
 	}
 }
 
-/* SVG Sprite with PNG Fallback */
+@mixin sprites-x2($sprites) {
+	@each $sprite in $sprites {
+		$sprite-name: spr-getName($sprite);
+
+		.#{$sprite-name} {
+			@include sprite-x2($sprite);
+		}
+	}
+	@include respond-to(hd) {
+		@each $sprite in $sprites {
+			$sprite-name: spr-getName($sprite);
+
+			.#{$sprite-name} {
+				@include sprite-image($sprite);
+			}
+		}
+	}
+}
+
+//   .d8888b.  888     888  .d8888b.       8888888          888 d8b                        Y88b  Y88b         8888888b.  888b    888  .d8888b.  
+//  d88P  Y88b 888     888 d88P  Y88b        888            888 Y8P                         Y88b  Y88b        888   Y88b 8888b   888 d88P  Y88b 
+//  Y88b.      888     888 888    888        888            888                              Y88b  Y88b       888    888 88888b  888 888    888 
+//   "Y888b.   Y88b   d88P 888               888   88888b.  888 888 88888b.   .d88b.          Y88b  Y88b      888   d88P 888Y88b 888 888        
+//      "Y88b.  Y88b d88P  888  88888        888   888 "88b 888 888 888 "88b d8P  Y8b         d88P  d88P      8888888P"  888 Y88b888 888  88888 
+//        "888   Y88o88P   888    888        888   888  888 888 888 888  888 88888888        d88P  d88P       888        888  Y88888 888    888 
+//  Y88b  d88P    Y888P    Y88b  d88P        888   888  888 888 888 888  888 Y8b.           d88P  d88P        888        888   Y8888 Y88b  d88P 
+//   "Y8888P"      Y8P      "Y8888P88      8888888 888  888 888 888 888  888  "Y8888       d88P  d88P         888        888    Y888  "Y8888P88 
+
 @mixin sprites-svg($sprites) {
 	@each $sprite in $sprites {
-		$sprite-name: nth($sprite, 10);
+		$sprite-name: spr-getName($sprite);
+
 		.#{$sprite-name} {
 			.no-js &, .no-svg & {
 				@include sprite($sprite);
@@ -52,60 +309,9 @@
 }
 }
 
-
-
-/* Size x2 */
-@mixin sprite-width-x2($sprite) {
-	width: nth($sprite, 5)/2;
-}
-
-@mixin sprite-height-x2($sprite) {
-	height: nth($sprite, 6)/2;
-}
-
-@mixin sprite-position-x2($sprite) {
-	$sprite-offset-x: nth($sprite, 3)/2;
-	$sprite-offset-y: nth($sprite, 4)/2;
-	background-position: $sprite-offset-x  $sprite-offset-y;
-	background-size: nth($sprite, 7)/2 nth($sprite, 8)/2;
-}
-
-@mixin sprite-image-fallback($sprite) {
-	$sprite-image: nth($sprite, 9);
-	background-image: url(#{$fallback});
-}
-
-@mixin sprite-x2($sprite) {
-	@include sprite-image-fallback($sprite);
-	@include sprite-position-x2($sprite);
-	@include sprite-width-x2($sprite);
-	@include sprite-height-x2($sprite);
-}
-
-/* PNG Sprite */
-@mixin sprites-x2($sprites) {
-	@each $sprite in $sprites {
-		$sprite-name: nth($sprite, 10);
-
-		.#{$sprite-name} {
-			@include sprite-x2($sprite);
-		}
-	}
-	@include respond-to(hd) {
-		@each $sprite in $sprites {
-			$sprite-name: nth($sprite, 10);
-
-			.#{$sprite-name} {
-				@include sprite-image($sprite);
-			}
-		}
-	}
-}
-
-/* SVG Sprite with PNG Fallback */
 @mixin sprites-svg-x2($sprites) {
 	@each $sprite in $sprites {
-		$sprite-name: nth($sprite, 10);
+		$sprite-name: spr-getName($sprite);
 
 		.#{$sprite-name} {
 			.no-js &, .no-svg & {
@@ -122,7 +328,7 @@
 
 @include respond-to(hd) {
 	@each $sprite in $sprites {
-		$sprite-name: nth($sprite, 10);
+		$sprite-name: spr-getName($sprite);
 
 		.#{$sprite-name} {
 			.no-js &, .no-svg & {
@@ -133,7 +339,70 @@
 }
 }
 
-/* Default: Display PNG fallback first, hide svg, enhance with modernizr if svg supported */
+//   .d8888b.  888     888  .d8888b.       888888b.    .d8888b.       Y88b  Y88b         8888888b.  888b    888  .d8888b.  
+//  d88P  Y88b 888     888 d88P  Y88b      888  "88b  d88P  Y88b       Y88b  Y88b        888   Y88b 8888b   888 d88P  Y88b 
+//  Y88b.      888     888 888    888      888  .88P  888    888        Y88b  Y88b       888    888 88888b  888 888    888 
+//   "Y888b.   Y88b   d88P 888             8888888K.  888                Y88b  Y88b      888   d88P 888Y88b 888 888        
+//      "Y88b.  Y88b d88P  888  88888      888  "Y88b 888  88888         d88P  d88P      8888888P"  888 Y88b888 888  88888 
+//        "888   Y88o88P   888    888      888    888 888    888        d88P  d88P       888        888  Y88888 888    888 
+//  Y88b  d88P    Y888P    Y88b  d88P      888   d88P Y88b  d88P       d88P  d88P        888        888   Y8888 Y88b  d88P 
+//   "Y8888P"      Y8P      "Y8888P88      8888888P"   "Y8888P88      d88P  d88P         888        888    Y888  "Y8888P88 
+
+@mixin sprites-bg-svg($sprites) {
+	@each $sprite in $sprites {
+		
+		$sprite-name: spr-getName($sprite);
+
+		.#{$sprite-name} {
+			@include sprite-position($sprite);
+			@include sprite-width($sprite);
+			@include sprite-height($sprite);
+			.no-js &, .no-svg & {
+				@include sprite-image-fallback($sprite);
+			}
+			.svg & {
+				@include sprite-image($sprite);
+			}
+		}
+	}
+
+}
+
+@mixin sprites-bg-svg-x2($sprites) {
+	@each $sprite in $sprites {
+		$sprite-name: spr-getName($sprite);
+
+		.#{$sprite-name} {
+			@include sprite-position($sprite);
+			@include sprite-width($sprite);
+			@include sprite-height($sprite);
+			.no-js &, .no-svg & {
+				@include sprite-image-fallback($sprite);
+			}
+			.svg & {
+				@include sprite-image($sprite);
+			}
+		}
+	}
+
+	@include respond-to(hd) {
+		@each $sprite in $sprites {
+			$sprite-name: spr-getName($sprite);
+
+			.#{$sprite-name} {
+				@include sprite-position($sprite);
+				@include sprite-width($sprite);
+				@include sprite-height($sprite);
+				.no-js &, .no-svg & {
+					@include sprite-image-fallback-x2($sprite);
+				}
+			}
+		}
+	}
+}
+
+
+//Display PNG fallback first, hide SVG, enhance with modernizr if SVG is supported
 .no-js svg{
 	display: none;
 }

@@ -1,21 +1,8 @@
-@import 'global';
-@import 'normalize';
-@import 'responsive';
-@import 'layout-vars';
-//@import 'debug'; // <-- comment this out to remove debug container styles
-@import 'styleguide';
+
 
 //Sprite
 @import 'sprite-mixins';
 
-//Main
-@import 'helper';
-@import 'layout';
-@import 'main';
-@import 'default';
-
-//Components
-
-
-@import 'media-query-visibility';
-@import 'print';
+body {
+    color: #444444;
+}

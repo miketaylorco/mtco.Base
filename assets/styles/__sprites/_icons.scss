@@ -1,0 +1,25 @@
+$icons-mobileNavMinus-name: 'icons-mobileNavMinus';
+$icons-mobileNavMinus-offset-x: 0px;
+$icons-mobileNavMinus-offset-y: 0px;
+$icons-mobileNavMinus-width: 44px;
+$icons-mobileNavMinus-height: 44px;
+$icons-mobileNavMinus-image: '../images/__sprites/icons.svg?v=1';
+$icons-mobileNavMinus: 0px 0px 44px 44px 136px 68px 12px 'icons-mobileNavMinus' '../images/__sprites/icons.svg?v=1' '../images/__sprites/icons.png?v=1' '' true;
+$icons-mobileNavPlus-name: 'icons-mobileNavPlus';
+$icons-mobileNavPlus-offset-x: -68px;
+$icons-mobileNavPlus-offset-y: 0px;
+$icons-mobileNavPlus-width: 44px;
+$icons-mobileNavPlus-height: 44px;
+$icons-mobileNavPlus-image: '../images/__sprites/icons.svg?v=1';
+$icons-mobileNavPlus: -68px 0px 44px 44px 136px 68px 12px 'icons-mobileNavPlus' '../images/__sprites/icons.svg?v=1' '../images/__sprites/icons.png?v=1' '' true;
+
+$icons-width: 136px;
+$icons-height: 68px;
+$icons-image: '../images/__sprites/icons.svg?v=1';
+$icons-image-fb: '../images/__sprites/icons.png?v=1';
+$icons-sprites: $icons-mobileNavMinus $icons-mobileNavPlus;
+$icons: 136px 68px '../images/__sprites/icons.svg?v=1' $icons-sprites;
+$icons-padding: 12px;
+$icons-svg-bg: true;
+
+@include sprites-bg-svg($icons-sprites);

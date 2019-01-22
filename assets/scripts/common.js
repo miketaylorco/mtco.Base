@@ -35,9 +35,3 @@ http://gregfranko.com/jquery-best-practices/#/8
   // The rest of code goes here!
 
 }));
-
-
-
-
-
-
