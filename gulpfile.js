@@ -100,7 +100,6 @@ var paths = {
     // paths for watching
     watchGlobalNunjucks:            ['__layouts', '__includes'],
 
-
     // paths for assets
     files:                          'assets/files',
     absoluteFiles:                  [
@@ -258,7 +257,7 @@ var cssnanoSettings = {
 
 
 // pipe to CMS?
-var doPipeAssetsToCms = (typeof paths.pipeAssetsToCms !== 'undefined' && paths.pipeAssetsToCms.length > 0 && argv.cms);
+var doPipeAssetsToCms = (typeof paths.pipeAssetsToCms !== 'undefined' && paths.pipeAssetsToCms.length > 0);
 
 function pipeStreamToCms (stream, suffix) {
   for(var i=0; i < paths.pipeAssetsToCms.length; i++) {
@@ -758,7 +757,7 @@ gulp.task('scripts:body', function(done) {
 
 gulp.task('scripts', function(done) {
 
-    var stream = gulp.src([paths.scripts + '/**/*.js', '!' + paths.scriptsHead + '/**/*', '!' + paths.scriptsBody + '/**/*'])
+    var stream = gulp.src([paths.scripts + '/**/*.js', '!' + paths.scripts + '/**/*.min.js', '!' + paths.scriptsHead + '/**/*', '!' + paths.scriptsBody + '/**/*'])
         .pipe(tap(function(file) {
             // find "var navJSON={};" and replace with navigation
             if(paths.appendNavTo == path.basename(file.path)) {
@@ -770,6 +769,19 @@ gulp.task('scripts', function(done) {
         .pipe(gulpif(settings.addSourceMaps, sourcemaps.init()))
         .pipe(uglify())
         .pipe(gulpif(settings.addSourceMaps, sourcemaps.write({includeContent: true})))
+        .pipe(gulp.dest(paths.local + '/' + paths.scripts))
+        .pipe(gulpif(argv.dist, gulp.dest(paths.dist + '/' + paths.scripts)));
+
+    if(doPipeAssetsToCms) {
+        stream = pipeStreamToCms(stream, paths.scripts);
+    }
+
+    done();
+});
+
+gulp.task('scripts:min', function(done) {
+
+    var stream = gulp.src([paths.scripts + '/**/*.min.js', '!' + paths.scriptsHead + '/**/*.js', '!' + paths.scriptsBody + '/**/*.js'])
         .pipe(gulp.dest(paths.local + '/' + paths.scripts))
         .pipe(gulpif(argv.dist, gulp.dest(paths.dist + '/' + paths.scripts)));
 
@@ -1042,6 +1054,11 @@ gulp.task('clean', function(done) {
                 }
             }
         }
+
+        // reset pipeAssetsToCms variable if none are now required
+        if(paths.pipeAssetsToCms.length == 0) {
+            doPipeAssetsToCms = false;
+        }
     }
 
     if(argv.local) {
@@ -1131,10 +1148,11 @@ gulp.task('watch', function(done) {
         .on('error', function() {});
 
     // check for script changes
-    gulp.watch([paths.scripts + '/**/*.js', '!' + paths.scriptsHead + '/**/*.js', '!' + paths.scriptsBody + '/**/*.js'], gulp.series('scripts', argv.dist ? gulp.parallel('reload:local', 'reload:dist') : 'reload:local'))
+    gulp.watch([paths.scripts + '/**/*.js', '!' + paths.scripts + '/**/*.min.js', '!' + paths.scriptsHead + '/**/*.js', '!' + paths.scriptsBody + '/**/*.js'], gulp.series('scripts', argv.dist ? gulp.parallel('reload:local', 'reload:dist') : 'reload:local'))
         .on('unlink', deleteScript)
         .on('error', function() {});
 
+    gulp.watch([paths.scripts + '/**/*.min.js', '!' + paths.scriptsHead + '/**/*.js', '!' + paths.scriptsBody + '/**/*.js'], gulp.series('scripts:min', argv.dist ? gulp.parallel('reload:local', 'reload:dist') : 'reload:local')).on('error', function() {});
     gulp.watch(paths.scriptsHead + '/**/*.js', gulp.series('scripts:head', argv.dist ? gulp.parallel('reload:local', 'reload:dist') : 'reload:local')).on('error', function() {});
     gulp.watch(paths.scriptsBody + '/**/*.js', gulp.series('scripts:body', argv.dist ? gulp.parallel('reload:local', 'reload:dist') : 'reload:local')).on('error', function() {});
 
@@ -1170,7 +1188,7 @@ gulp.task('watch', function(done) {
 // 88      .a8P   "8b,   ,aa    88     88,    ,88  "8a,   ,a88  88    88,    
 // 88888888Y"'     `"Ybbd8"'    88     `"8bbdP"Y8   `"YbbdP'Y8  88    "Y888  
 
-gulp.task('default', gulp.series('clean', gulp.parallel('nunjucks', 'sass', 'css', 'css:min', 'scripts:head', 'scripts:body', 'scripts', 'files', 'files:absolute', 'images', 'media', 'video'), 'serve', 'watch'));
+gulp.task('default', gulp.series('clean', gulp.parallel('nunjucks', 'sass', 'css', 'css:min', 'scripts:head', 'scripts:body', 'scripts', 'scripts:min', 'files', 'files:absolute', 'images', 'media', 'video'), 'serve', 'watch'));
 
 
 
@@ -1189,6 +1207,7 @@ gulp.task('default', gulp.series('clean', gulp.parallel('nunjucks', 'sass', 'css
 // ############################################################################################################################ 
 // ############################################################################################################################ 
 
+/* Question: is this still how we would do this? */
 
 
 
