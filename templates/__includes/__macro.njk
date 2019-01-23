@@ -1,0 +1,9 @@
+{#
+{% macro internalLink(id) %}{% set info = id | obj %}{% if info.title %}<a href="{{id|linkid}}" title="{{info.title}}">{{info.name}}</a>{% else %}<a href="{{id|linkid}}">{{info.name}}</a>{% endif %}{% endmacro %}
+
+{% macro internalLinkWithClass(id, className) %}{% set info = id | obj %}{% if info.title %}<a href="{{id|linkid}}" title="{{info.title}}" class="{{ className }}">{{info.name}}</a>{% else %}<a href="{{id|linkid}}" class="{{ className }}">{{info.name}}</a>{% endif %}{% endmacro %}
+
+{% macro exlink(link, text) %}<a href="{{link}}" rel="external" title="This link will open in a new browser window" class="external">{{text}}</a>{% endmacro %}
+
+{% macro exlinkWithClass(link, text, className) %}<a href="{{link}}" rel="external" title="This link will open in a new browser window" class="{{ className }}">{{text}}</a>{% endmacro %}
+#}

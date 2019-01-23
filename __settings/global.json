@@ -1,5 +1,6 @@
 {
     "titleSuffix": "Site Name Goes Here",
+    "gtmContainerId": "GTM-XXXXXXX",
     "debug": true,
     "showStyleGuide": true,
     "mq": {

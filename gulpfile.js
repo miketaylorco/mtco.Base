@@ -15,7 +15,6 @@ var del                             = require('del');
 var argv                            = require('yargs').argv;
 var directoryExists                 = require('directory-exists');
 
-
 // Gulp
 var gulp                            = require('gulp');
 
@@ -114,7 +113,6 @@ var paths = {
     scripts:                        'assets/scripts',
     scriptsHead:                    'assets/scripts/__head',
     scriptsHeadFiles:               [
-                                        'modernizr-3.3.1.min.js',
                                         'respond.min.js'
                                     ],
     scriptsBody:                    'assets/scripts/__body',
@@ -257,7 +255,7 @@ var cssnanoSettings = {
 
 
 // pipe to CMS?
-var doPipeAssetsToCms = (typeof paths.pipeAssetsToCms !== 'undefined' && paths.pipeAssetsToCms.length > 0);
+var doPipeAssetsToCms = (typeof paths.pipeAssetsToCms !== 'undefined' && paths.pipeAssetsToCms.length > 0 && argv.cms);
 
 function pipeStreamToCms (stream, suffix) {
   for(var i=0; i < paths.pipeAssetsToCms.length; i++) {
@@ -725,7 +723,7 @@ gulp.task('scripts:head', function(done) {
     
     var stream = gulp.src(paths.scriptsHeadFiles)
         .pipe(gulpif(settings.addSourceMaps, sourcemaps.init()))
-        .pipe(concat('_head.min.js'))
+        .pipe(concat('__head.min.js'))
         .pipe(uglify())
         .pipe(gulpif(settings.addSourceMaps, sourcemaps.write()))
         .pipe(gulp.dest(paths.local + '/' + paths.scripts))
@@ -742,7 +740,7 @@ gulp.task('scripts:body', function(done) {
     
     var stream = gulp.src(paths.scriptsBodyFiles)
         .pipe(gulpif(settings.addSourceMaps, sourcemaps.init()))
-        .pipe(concat('_body.min.js'))
+        .pipe(concat('__body.min.js'))
         .pipe(uglify())
         .pipe(gulpif(settings.addSourceMaps, sourcemaps.write()))
         .pipe(gulp.dest(paths.local + '/' + paths.scripts))
